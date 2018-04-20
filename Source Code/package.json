@@ -1,0 +1,31 @@
+{
+  "name": "DACK",
+  "version": "1.0.0",
+  "description": "DACK",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "build": "node build.js"
+  },
+  "author": "tui",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.17.1",
+    "crypto": "^0.0.3",
+    "express": "^4.15.2",
+    "express-handlebars": "^3.0.0",
+    "express-handlebars-sections": "^1.0.1",
+    "moment": "^2.18.1",
+    "morgan": "^1.8.1",
+    "mustache": "^2.3.0",
+    "mysql": "^2.13.0",
+    "path": "^0.12.7",
+    "q": "^1.5.0",
+    "recaptcha2": "^1.3.2",
+    "wnumb": "^1.1.0",
+    "express-mysql-session": "^1.2.1",
+    "express-session": "^1.15.3",
+    "nodemailer": "^4.0.1",
+    "nodemailer-express-handlebars": "^2.0.0"
+  }
+}
