@@ -6,7 +6,7 @@ var express = require('express'),
     sanpham3 = require('../models/indexRepo'),
     q = require('q');
 
-var r = express.Router();
+//var r = express.Router();
 
 
 
