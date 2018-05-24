@@ -1,0 +1,579 @@
+<html>
+<head>
+    <title>Tìm kiếm</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+{{#section 'css'}}
+
+    <link rel="stylesheet" type="text/css" href="/assests/bootstrap-3.3.7-dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="/assests/font-awesome-4.7.0/css/font-awesome.min.css"/>
+
+    <link rel="stylesheet" type="text/css" href=/CSS/popup_cart_desktop.css">
+    <link rel="stylesheet" type="text/css" href="/CSS/owl.carousel.css">
+    <link rel="stylesheet" type="text/css" href="/CSS/owl.theme.min.css">
+    <link rel="stylesheet" type="text/css" href="/CSS/css.css">
+    <link rel="stylesheet" type="text/css" href="/CSS/jgrowl.css">
+    <link rel="stylesheet" type="text/css" href="/CSS/style.css">
+
+    <link rel="stylesheet" type="text/css" href="/CSS/home.css"/>
+    <link rel="stylesheet" type="text/css" href="/CSS/nhomsanpham.css"/>
+    <link rel="stylesheet" type="text/css" href="/CSS/timkiem.css"/>
+{{/section}}
+
+</head>
+<body>
+
+
+
+
+
+
+
+<div class="container">
+
+
+
+    {{#each sanphamyeuthich}}
+        <div class="hidden sanphamyeuthich" value="{{idsanpham}}">
+
+        </div>
+    {{/each}}
+    <h2 class="name_title">
+        <p class="alignCenter">
+            Tìm thấy {{total}} kết quả của từ khóa " <a href="#"><font color= #DC3333>{{timKiemName}}</font></a> "
+        </p>
+    </h2>
+
+
+
+
+    <div class="col-md-12 col-sm-12 col-xs-12 search_form_page" >
+        <form action="/timkiem" method="get" class="search_form_page_" role="search">
+            <input placeholder="Nhập từ khóa cần tìm..." class="search_input_page" type="text" name="timKiem">
+            <button class="submit_button" type="submit"><i class="btnsearch_page fa fa-search" aria-hidden="true"></i></button>
+        </form>
+    </div>
+
+    <form id="frm1" method="post" action="">
+    <a href="javascript:{}" onclick="document.getElementById('frm1').submit();" class="themvaomucyeuthich"style="display:scroll; text-align:center; position:fixed;margin-left: 2%;color: blue " title="Lưu và xem sản phẩm yêu thích" data-toggle="modal">
+    <span style="line-height: 2">Lưu và xem <br/>sản phẩm yêu thích</span>
+    <img src="/Images/add.png" >
+    </a>
+{{#if isSortMoney }}
+    <div class="block-title block">
+        <h5>
+            <span></span>
+        </h5>
+    </div>
+
+
+
+    <!-- Sắp xếp theo thứ tự -->
+    <div class="col-lg-12 col-md-12 hidden-sm-down  collection_header" style="line-height: 1">
+        <div class="toolbar">
+            <div id="sort-by">
+                <label class="left">Sắp xếp theo : </label>
+                <ul>
+                    <li><span>Giá tăng dần</span>
+                        <ul>
+                            <li><a href="/timkiem?timKiem={{timKiemName}}">Mặc định</a></li>
+                            <li><a href="/timkiem/sortbytimedesc?timKiem={{timKiemName}}">Thời gian kết thúc giảm dần</a></li>
+                            <li><a href="/timkiem/sortbymoneyasc?timKiem={{timKiemName}}">Giá tăng dần</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- ô sản phẩm -->
+    <div class="col-lg-12 col-md-12 collection_container list-items" style="line-height: 1">
+        <table width="100%" style="line-height: normal">
+            <tbody>
+            <tr >
+                <th colspan="2">Mô tả sản phẩm</th>
+                <th> Giá hiện tại </th>
+                <th> Giá mua ngay </th>
+                <th> Số lượt ra giá<br>hiện tại</th>
+                <th> Thời gian còn lại</th>
+            </tr>
+            {{#each productsTimKiem}}
+                <tr id="daugia{{idSANPHAM}}" class="daugia">
+                    <td class="mota" style="text-align: center; width: 10%">
+                        <a href="/sanphamloai1/detail/{{idSANPHAM}} title="{{tensanpham4}}">
+                            <img src="{{hinhanh1}}" alt="{{tensanpham4}}">
+                        </a>
+                    </td>
+                    <td class="mota" width="30%">
+                        <div class="item_loop_list_title fs15">
+                            <h3 class="fw_600"><a href="/sanphamloai1/detail/{{idSANPHAM}}" title="{{tensanpham4}}"> {{tensanpham4}} </a></h3>
+                        </div>
+                        <div class="product-seller">
+                            <p> Người bán:
+                                <a href="#">{{hoTenNguoiBan}}</a>
+                            </p>
+                        </div>
+                        <div class="product-sub" title="{{motasanphamngangon}}">
+                            <p> Mô tả:{{motasanphamngangon}}</p>
+                        </div>
+                    </td>
+                    <td>
+                        {{tiencaonhat}}
+                        <p>&nbsp;</p>
+                        Người ra giá:<br/> <font color="#d2092d">{{hoTenNguoiDauGia}}</font>
+                    </td>
+                    <td> <span> {{giamualien}} </span></td>
+                    <td> {{soluotdaugia}} </td>
+                    <td>
+                        <div class="time daugia{{idSANPHAM}}"  style="color: red; margin-top: 8px; margin-right: -7px" value="{{thoigiankethuc}}">
+                        </div>
+                        <div class="checkbox">
+                            <input class="checked" id="check{{idSANPHAM}}" type="checkbox" name="sanphamyeuthich" value="check{{idSANPHAM}}">
+                            <label for="check{{idSANPHAM}}"> <span title="Lưu sản phẩm yêu thích" class="glyphicon glyphicon-star"></span></label>
+                        </div>
+                        <p class="btn_see">
+                            <a href="/sanphamloai1/detail/{{idSANPHAM}}" title="Xem chi tiết sản phẩm">
+                                <span class="glyphicon glyphicon-gift" aria-hidden="true"></span>
+                                Xem chi tiết</a>
+                        </p>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="6" class="border-under">
+                    </td>
+                </tr>
+            {{/each}}
+            <br>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- số trang -->
+    <div class="col-lg-12 col-md-12 menu">
+        <ul class="pagination">
+            {{#if showPrevPage}}
+                <li>
+                    <a href="/timkiem/sortbymoneyasc?timKiem={{timKiemName}}&page={{prevPage}}" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
+            {{/if}}
+            {{#each pages }}
+                {{#if isActive }}
+                    <li class="active">
+                        <a href="/timkiem/sortbymoneyasc?timKiem={{timKiemName}}&page={{pageValue}}">{{pageValue}}</a>
+                    </li>
+                {{else}}
+                    <li>
+                        <a href="/timkiem/sortbymoneyasc?timKiem={{timKiemName}}&page={{pageValue}}">{{pageValue}}</a>
+                    </li>
+                {{/if}}
+            {{/each}}
+            {{#if showNextPage }}
+                <li>
+                    <a href="/timkiem/sortbymoneyasc?timKiem={{timKiemName}}&page={{nextPage}}" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+            {{/if}}
+        </ul>
+    </div>
+
+
+{{else}}
+
+
+{{#if isSortTime}}
+    <div class="block-title block">
+        <h5>
+            <span></span>
+        </h5>
+    </div>
+
+
+
+    <!-- Sắp xếp theo thứ tự -->
+    <div class="col-lg-12 col-md-12 hidden-sm-down  collection_header" style="line-height: 1">
+        <div class="toolbar">
+            <div id="sort-by">
+                <label class="left">Sắp xếp theo : </label>
+                <ul>
+                    <li><span>Thời gian kết thúc giảm dần</span>
+                        <ul>
+                            <li><a href="/timkiem?timKiem={{timKiemName}}">Mặc định</a></li>
+                            <li><a href="/timkiem/sortbytimedesc?timKiem={{timKiemName}}">Thời gian kết thúc giảm dần</a></li>
+                            <li><a href="/timkiem/sortbymoneyasc?timKiem={{timKiemName}}">Giá tăng dần</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- ô sản phẩm -->
+    <div class="col-lg-12 col-md-12 collection_container list-items" style="line-height: 1">
+        <table width="100%" style="line-height: normal">
+            <tbody>
+            <tr >
+                <th colspan="2">Mô tả sản phẩm</th>
+                <th> Giá hiện tại </th>
+                <th> Giá mua ngay </th>
+                <th> Số lượt ra giá<br>hiện tại</th>
+                <th> Thời gian còn lại</th>
+            </tr>
+            {{#each productsTimKiem}}
+                <tr id="daugia{{idSANPHAM}}" class="daugia">
+                    <td class="mota" style="text-align: center; width: 10%">
+                        <a href="/sanphamloai1/detail/{{idSANPHAM}}" title="{{tensanpham4}}">
+                            <img src="{{hinhanh1}}" alt="{{tensanpham4}}">
+                        </a>
+                    </td>
+                    <td class="mota" width="30%" style="padding-left: 10px">
+                        <div class="item_loop_list_title fs15">
+                            <h3 class="fw_600"><a href="/sanphamloai1/detail/{{idSANPHAM}}" title="{{tensanpham4}}"> {{tensanpham4}} </a></h3>
+                        </div>
+                        <div class="product-seller">
+                            <p> Người bán:
+                                <a href="#">{{hoTenNguoiBan}}</a>
+                            </p>
+                        </div>
+                        <div class="product-sub" title="{{motasanphamngangon}}">
+                            <p> Mô tả:{{motasanphamngangon}}</p>
+                        </div>
+                    </td>
+                    <td>
+                        {{tienmax}}
+                        <p>&nbsp;</p>
+                        Người ra giá:<br/> <font color="#d2092d">{{hoTenNguoiDauGia}}</font>
+                    </td>
+                    <td> <span> {{giamualien}} </span></td>
+                    <td> {{soluotdaugia}} </td>
+                    <td>
+                        <div class="time daugia{{idSANPHAM}}"  style="color: red; margin-top: 8px; margin-right: -7px" value="{{thoigiankethuc}}">
+                        </div>
+                        <div class="checkbox">
+                            <input class="checked" id="check{{idSANPHAM}}" type="checkbox" name="sanphamyeuthich" value="check{{idSANPHAM}}">
+                            <label for="check{{idSANPHAM}}"> <span title="Lưu sản phẩm yêu thích" class="glyphicon glyphicon-star"></span></label>
+                        </div>
+                        <p class="btn_see">
+                            <a href="/sanphamloai1/detail/{{idSANPHAM}}" title="Xem chi tiết sản phẩm">
+                                <span class="glyphicon glyphicon-gift" aria-hidden="true"></span>
+                                Xem chi tiết</a>
+                        </p>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="6" class="border-under">
+                    </td>
+                </tr>
+            {{/each}}
+            <br>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- số trang -->
+    <div class="col-lg-12 col-md-12 menu">
+        <ul class="pagination">
+            {{#if showPrevPage}}
+                <li>
+                    <a href="/timkiem/sortbytimedesc?timKiem={{timKiemName}}&page={{prevPage}}" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
+            {{/if}}
+            {{#each pages }}
+                {{#if isActive }}
+                    <li class="active">
+                        <a href="/timkiem/sortbytimedesc?timKiem={{timKiemName}}&page={{pageValue}}">{{pageValue}}</a>
+                    </li>
+                {{else}}
+                    <li>
+                        <a href="/timkiem/sortbytimedesc?timKiem={{timKiemName}}&page={{pageValue}}">{{pageValue}}</a>
+                    </li>
+                {{/if}}
+            {{/each}}
+            {{#if showNextPage }}
+                <li>
+                    <a href="/timkiem/sortbytimedesc?timKiem={{timKiemName}}&page={{nextPage}}" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+            {{/if}}
+        </ul>
+    </div>
+
+
+{{else}}
+    <div class="block-title block">
+        <h5>
+            <span></span>
+        </h5>
+    </div>
+
+
+
+    <!-- Sắp xếp theo thứ tự -->
+    <div class="col-lg-12 col-md-12 hidden-sm-down  collection_header" style="line-height: 1">
+        <div class="toolbar">
+            <div id="sort-by">
+                <label class="left">Sắp xếp theo : </label>
+                <ul>
+                    <li><span>Thứ tự</span>
+                        <ul>
+                            <li><a href="/timkiem?timKiem={{timKiemName}}">Mặc định</a></li>
+                            <li><a href="/timkiem/sortbytimedesc?timKiem={{timKiemName}}">Thời gian kết thúc giảm dần</a></li>
+                            <li><a href="/timkiem/sortbymoneyasc?timKiem={{timKiemName}}">Giá tăng dần</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- ô sản phẩm -->
+    <div class="col-lg-12 col-md-12 collection_container list-items" style="line-height: 1">
+        <table width="100%" style="line-height: normal">
+            <tbody>
+            <tr >
+                <th colspan="2">Mô tả sản phẩm</th>
+                <th> Giá hiện tại </th>
+                <th> Giá mua ngay </th>
+                <th> Số lượt ra giá<br>hiện tại</th>
+                <th> Thời gian còn lại</th>
+            </tr>
+            {{#each productsTimKiem}}
+            <tr id="daugia{{idSANPHAM}}" class="daugia">
+                <td class="mota" style="text-align: center; width: 10%">
+                    <a href="/sanphamloai1/detail/{{idSANPHAM}}" title="{{tensanpham4}}">
+                        <img src="{{hinhanh1}}" alt="{{tensanpham4}}">
+                    </a>
+                </td>
+                <td class="mota" width="30%" style="padding-left: 10px">
+                    <div class="item_loop_list_title fs15">
+                        <h3 class="fw_600"><a href="/sanphamloai1/detail/{{idSANPHAM}}" title="{{tensanpham4}}"> {{tensanpham4}} </a></h3>
+                    </div>
+                    <div class="product-seller">
+                        <p> Người bán:
+                            <a href="#">{{hoTenNguoiBan}}</a>
+                        </p>
+                    </div>
+                    <div class="product-sub" title="{{motasanphamngangon}}">
+                        <p> Mô tả:{{motasanphamngangon}}</p>
+                    </div>
+                </td>
+                <td>
+                    {{tienmax}}
+                    <p>&nbsp;</p>
+                    Người ra giá:<br/> <font color="#d2092d">{{hoTenNguoiDauGia}}</font>
+                </td>
+                <td> <span> {{giamualien}} </span></td>
+                <td> {{soluotdaugia}} </td>
+                <td>
+                    <div class="time daugia{{idSANPHAM}}"  style="color: red; margin-top: 8px; margin-right: -7px" value="{{thoigiankethuc}}">
+                    </div>
+                    <div class="checkbox">
+                        <input class="checked" id="check{{idSANPHAM}}" type="checkbox" name="sanphamyeuthich" value="check{{idSANPHAM}}">
+                        <label for="check{{idSANPHAM}}"> <span title="Lưu sản phẩm yêu thích" class="glyphicon glyphicon-star"></span></label>
+                    </div>
+                    <p class="btn_see">
+                        <a href="/sanphamloai1/detail/{{idSANPHAM}}" title="Xem chi tiết sản phẩm">
+                            <span class="glyphicon glyphicon-gift" aria-hidden="true"></span>
+                            Xem chi tiết</a>
+                    </p>
+
+                </td>
+            </tr>
+            <tr>
+                <td colspan="6" class="border-under">
+                </td>
+            </tr>
+            {{/each}}
+        <br>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- số trang -->
+    <div class="col-lg-12 col-md-12 menu">
+        <ul class="pagination">
+            {{#if showPrevPage}}
+                <li>
+                    <a href="timkiem?timKiem={{timKiemName}}&page={{prevPage}}" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
+            {{/if}}
+            {{#each pages }}
+                {{#if isActive }}
+                    <li class="active">
+                        <a href="timkiem?timKiem={{timKiemName}}&page={{pageValue}}">{{pageValue}}</a>
+                    </li>
+                {{else}}
+                    <li>
+                        <a href="timkiem?timKiem={{timKiemName}}&page={{pageValue}}">{{pageValue}}</a>
+                    </li>
+                {{/if}}
+            {{/each}}
+            {{#if showNextPage }}
+                <li>
+                    <a href="timkiem?timKiem={{timKiemName}}&page={{nextPage}}" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+            {{/if}}
+        </ul>
+    </div>
+
+
+{{/if}}
+{{/if}}
+    </form>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" src="/assests/jquery-3.1.1.min.js"></script>
+<script type="text/javascript" src="/assests/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/JS/productreviews.min.js"></script>
+<script type="text/javascript" src="/JS/owl_product_details.js"> </script>
+<script type="text/javascript" src="/JS/owl.carousel.min.js"></script>
+
+<script>
+    $(document).ready(function() {
+        $('#showmenu').click(function() {
+            $('#menucontentother').slideToggle('300');
+            return false;
+        });
+    });
+    $(".nav-drop").mouseenter(function() {
+        $("#menucontentother").show();
+    }).mouseleave(function() {
+        $("#menucontentother").hide();
+    });
+
+</script>
+<script>
+    $('.product-sub p').each(function()
+    {
+        if($.trim($(this).text()).length > 73)
+        {
+            var x = $.trim($(this).text());
+            x = x.slice(0, 73) + "...";
+            $.trim($(this).text(x));
+        }
+
+    });
+</script>
+<script>
+    $('.time','.daugia').each(function(){
+        var m = $(this).attr('class').slice(5, $(this).attr('class').length);
+
+        var n = $(this).parents('.daugia').attr('id');
+        if(m === n)
+        {
+
+            var timeFinish = $(this).attr('value');
+            if(timeFinish == "null")
+            {
+                $('.time.'+m).html("HẾT HẠN");
+                return;
+
+            }
+
+            var calcNewYear = setInterval(function(){
+
+                date_future = new Date(timeFinish);
+                date_now = new Date();
+                seconds = Math.floor((date_future - (date_now))/1000);
+                minutes = Math.floor(seconds/60);
+                hours = Math.floor(minutes/60);
+                days = Math.floor(hours/24);
+                hours = hours-(days*24);
+                minutes = minutes-(days*24*60)-(hours*60);
+                seconds = seconds-(days*24*60*60)-(hours*60*60)-(minutes*60)
+                if(days < 0)
+                {
+
+                }
+
+                $('.time.'+m).html((days) + " ngày " + '<br>' + checkTime(hours) + ":" + checkTime(minutes) + ":" + checkTime(seconds));
+            },1000);
+        }
+        function checkTime(i)
+        {
+            if (i < 10) {
+                i = "0" + i;
+            }
+            return i;
+        }
+    });
+</script>
+<script>
+    var sanpham = [];
+    $('.hidden.sanphamyeuthich').each(function()
+    {
+
+        sanpham.push($(this).attr('value'));
+    });
+
+    $('.checkbox .checked').each(function()
+    {
+
+        var x = $(this).attr('value').slice(5, $(this).attr('value').length);
+        for(var i = 0; i < sanpham.length; i++)
+        {
+            if( x === sanpham[i])
+            {
+                var y = $(this).attr('id');
+                $('#'+y).prop('checked', true);
+
+            }
+        }
+    });
+
+</script>
+<script>
+    $(".themvaomucyeuthich").hide();
+    $(".checked").click(function() {
+        if($(".collection_container.list-items input[type=checkbox]:checked").length > 0)
+        {
+            $(".themvaomucyeuthich").show(300);
+        }
+
+        else
+            $(".themvaomucyeuthich").hide(200);
+    });
+</script>
+
+
+
+
+</body>
+</html>
