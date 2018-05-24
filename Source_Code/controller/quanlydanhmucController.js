@@ -23,6 +23,15 @@ r.get('/', function(req, res) {
         }
     }
 });
+r.post('/', function(req, res) {
+    var entity={
+        ten:req.body.tendanhmuc,
+        id2:req.body.values
+    }
+    danhmuc.them(entity).then(function (affe) {
+        res.redirect('/quanlidanhmuc');
+    })
+});
 r.get('/sua', function(req, res) {
     var entity={
         id:req.query.id
@@ -33,6 +42,14 @@ r.get('/sua', function(req, res) {
         }
         console.log(vm);
         res.render('Quản trị/suadanhmuc',vm);
+    })
+});r.post('/sua', function(req, res) {
+    var entity={
+        id:req.body.id,
+        ten:req.body.ten,
+    }
+    danhmuc.sua(entity).then(function (rows) {
+        res.redirect('/quanlidanhmuc');
     })
 });
 r.post('/xoa', function(req, res) {
@@ -54,6 +71,8 @@ r.post('/xoa', function(req, res) {
                         var vm = {
                             layoutModels: res.locals.layoutModels,
                             bac1: pRow1,
+                            bac2: pRow2,
+                            bac3: pRow3,
                             showError: true,
                             errorMsg: 'Có sản phẩm không được xóa danh mục'
                         }
