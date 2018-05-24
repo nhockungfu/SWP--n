@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		{{{_sections.title}}}
+		<link rel="stylesheet" type="text/css" href="/assests/bootstrap-3.3.7-dist/css/bootstrap.min.css">
+		{{{_sections.css}}}
+	</head>
+	<body>
+    <header>
+        <section class="header-banner hidden-md-down">
+            <a href="/" title="Trang chủ">
+                <div class="banner_top">
+                    <img src="/Images/banner_top.png"/>
+                </div>
+            </a>
+        </section>
+        <div class="header-container">
+            <div class="container container_main">
+                <div class="row">
+                    <div class="col-lg-3 col-md-8 col-sm-6 col-xs-6">
+                        <div class="logo">
+                            <a href="/" title="Golden mart">
+                                <img src="/Images/logo.png" alt="Trang chủ">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                        <div class="support_search hidden-md-down">
+
+                            <h5>Tư vấn bán hàng : </h5><span> 0934 55 55 80 - 0934 35 35</span>&nbsp;&nbsp;|&nbsp;&nbsp;
+
+
+                            <h5>Hotline : </h5><span> 0934.66.77.90</span>
+
+                        </div>
+                        <div class="search_form">
+                            <form action="/timkiem" method="get" class="search-form" role="search">
+                                <input placeholder="Nhập từ khóa cần tìm..." class="search_input" maxlength="70" id="search" type="text" name="timKiem" value="">
+                                <span class="search-before"></span><input type="submit" value="Tìm kiếm" class="btnsearch">
+
+                                <!--<input placeholder="Nhập từ khóa cần tìm..." class="search_input_page" type="text" name="timKiem">-->
+                                <!--<button class="submit_button" type="submit"><i class="btnsearch_page fa fa-search" aria-hidden="true"></i></button>-->
+                            </form>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-sm-4 col-xs-3 hidden-xs account-cart">
+                        <div class="col-lg-8 col-md-7 col-sm-8 hidden-md-down account">
+                            {{#if layoutModels.isLogged}}
+                                <div>
+                                    <img class="mg_bt_10" src="/Images/account.png" alt="Đăng ký hoặc đăng nhập" height="30" width="30">
+                                </div>
+                                <div>
+                                    <span>
+                                        <form id="frmLogout" method="post" action="/taikhoan/thoat"></form>
+                                        <a class="cl_old"></a><a href="javascript:;" title="thoát" id="thoat">Đăng xuất</a>
+
+                                       <div></div>
+                                        <a class="cl_old" href="/taikhoan/thongtincanhan" title="Đăng nhập">Chào {{ layoutModels.curUser.name}}</a>
+
+                                    </span>
+                                </div>
+                            {{else}}
+                                <div>
+                                    <img class="mg_bt_10" src="/Images/account.png" alt="Đăng ký hoặc đăng nhập" height="30" width="30">
+                                </div>
+                                <div>
+                                    <span>
+
+                                        <a class="cl_old" href="/taikhoan/dangnhap" title="Đăng nhập">Đăng nhập</a>
+                                        /
+                                        <a class="cl_old"></a><a href="/taikhoan/dangky" title="Đăng kí" id="customer_logout_link">Đăng ký</a>
+
+                                    </span>
+                                </div>
+                            {{/if}}
+
+                        </div>
+
+                        <div class="col-lg-4 col-md-5 col-sm-6 col-xs-12 cart hidden-md-down">
+                            <div>
+                                <img class="mg_bt_10" src="/Images/cart.png" alt="Hướng dẫn" height="30" width="30">
+                            </div>
+
+                            <div>
+                                    <span>
+                                        <a class="cl_old" href="/huongdan">Hướng dẫn</a>
+
+                                    </span>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+    </header>
+    <nav class="hidden-md-down">
+        <div class="container">
+            <div class="row nav_menu">
+                <div class="col-lg-3 col-md-4 hidden-sm-down nav-inner">
+                    <div class="col-lg-12 col-md-12 nav-drop">
+                        <div class="title-menu-bar">
+                            <div class="" style="margin-top: 15px">
+                                <a id="showmenu"> <span class="glyphicon glyphicon-align-justify"></span> Danh mục sản phẩm </a>
+                            </div>
+                        </div>
+
+                        <div id="menucontentother" class="col-lg-12 col-md-12 cate-sidebar sider_bar_page layout_menu" role="menu" style=" margin-top: -4px">
+                            <ul class="site-nav vertical-nav ">
+                                {{#each layoutModels.bac1}}
+                                    <li class="nav-item icon" data-submenu-id="{{idLOAISANPHAM1}}" id="{{idLOAISANPHAM1}}">
+                                        <a href="/sanphamloai1/{{idLOAISANPHAM1}}" alt="{{tensanpham}}" style="background: url(../public/Images/diengiadung.png) 7px center no-repeat; display: block; ">
+
+                                            <span class="bac1" id="{{idLOAISANPHAM1}}">{{tensanpham}}</span>
+
+                                        </a>
+                                        <div class="submenu hidden-md-down">
+                                            <ul class="menu-list-cate2">
+                                                <div class="row row-noGutter" id="item{{idLOAISANPHAM1}}">
+
+                                                    {{#each ../layoutModels.bac2}}
+                                                        <div class="col-md-4 text-xs-left text-left menu-home hidden">
+                                                            <ul  class="item{{LOAISANPHAM1_idLOAISANPHAM1}}" id="item{{idLOAISANPHAM2}}">
+
+
+                                                                <span><a href="/sanphamloai1/sanphamloai2/{{idLOAISANPHAM2}}">{{tensanpham}}</a></span>
+                                                                {{#each ../../layoutModels.bac3}}
+                                                                    <li class="hidden"><a class="item{{LOAISANPHAM2_idLOAISANPHAM2}}" href="/sanphamloai1/sanphamloai2/sanphamloai3/{{idLOAISP3}}">{{tensanpham}}</a></li>
+
+                                                                {{/each}}
+                                                                <li>
+                                                                    <a href="#">Xem tất cả
+                                                                        <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                                                                    </a>
+                                                                </li>
+
+                                                            </ul>
+                                                        </div>
+                                                    {{/each}}
+
+                                                </div>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                {{/each}}
+                            </ul>
+
+                        </div>
+                        <script>
+                            $(document).ready(function() {
+                                $('#showmenu').click(function() {
+                                    $('#menucontentother').slideToggle('300');
+                                    return false;
+                                });
+                            });
+                            $(".nav-drop").mouseenter(function() {
+                                $("#menucontentother").show();
+                            }).mouseleave(function() {
+                                $("#menucontentother").hide();
+                            });
+
+                        </script>
+
+                    </div>
+                </div>
+                <div class="col-lg-3 hidden-md-down main-nav">
+                    <ul id="nav">
+
+                        <li class=" parrent " style="margin-left: -40px"><a href="#">Giới thiệu</a></li>
+
+                        <li class=" parrent "><a href="#">Liên hệ</a></li>
+
+                        <li class=" last parrent "><a href="#">Tuyển dụng</a></li>
+
+
+
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-3 hidden-sm-down social  hidden-xs ">
+                    <div class="social-icon"><a href="#" title="Theo dõi Golden mart trên Youtube"><i class="fa fa-youtube" aria-hidden="true"></i></a></div>
+
+
+                    <div class="social-icon"><a href="#" title="Theo dõi Golden mart trên Google Plus"><i class="fa fa-google-plus" aria-hidden="true"></i></a></div>
+
+
+                    <div class="social-icon"><a href="#" title="Theo dõi Golden mart trên Twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a></div>
+
+
+                    <div class="social-icon"><a href="#" title="Theo dõi Golden mart trên Facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a></div>
+
+                </div>
+                {{#if layoutModels.isLogged}}
+                    {{#if layoutModels.isQL}}
+                        <div class="col-lg-3 col-md-8 hidden-sm-down nav-inner" style="margin-left: -15px; padding-left: 0px">
+
+                            <div class="col-lg-12 col-md-12">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-danger dropdown-toggle btn-lg" data-toggle="dropdown" style="padding-bottom: 14px">
+                                        Quản lý
+                                        <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu ">
+                                        <li><a href="/quanliyeucau"><span class="fa fa-angle-right"> </span> &nbsp Duyệt yêu cầu khách hàng</a></li>
+                                        <li><a href="/quanliuser"><span class="fa fa-angle-right"> </span> &nbsp Quản trị danh sách người dùng</a></li>
+                                        <li><a href="/quanlidanhmuc"><span class="fa fa-angle-right"> </span> &nbsp Quản trị danh sách danh mục</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                        </div>
+                {{else}}
+                    <div class="col-lg-3 col-md-8 hidden-sm-down nav-inner" style="margin-left: -15px; padding-left: 0px">
+
+                        <div class="col-lg-12 col-md-12">
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-danger dropdown-toggle btn-lg" data-toggle="dropdown" style="padding-bottom: 14px">
+                                    Thông tin cá nhân
+                                    <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu ">
+                                    <li><a href="/taikhoan/thongtincanhan"><span class="fa fa-angle-right"> </span> &nbsp Thông tin cá nhân</a></li>
+                                    <li><a href="/taikhoan/chitietdanhgia"><span class="fa fa-angle-right"> </span> &nbsp Chi tiết đánh giá</a></li>
+                                    <li><a href="/taikhoan/doimatkhau"><span class="fa fa-angle-right"> </span> &nbsp Đổi mật khẩu</a></li>
+                                    <li role="presentation" class="divider"></li>
+                                    <li><a href="#"><span class="fa fa-angle-right"> </span> &nbsp Sản phẩm đang đấu giá</a></li>
+                                    <li><a href="/quanlisanphamtaikhoan/sanphamyeuthich"><span class="fa fa-angle-right"> </span> &nbsp Sản phẩm yêu thích</a></li>
+                                    <li><a href="/taikhoan/daugiathang"><span class="fa fa-angle-right"> </span> &nbsp Sản phẩm đấu giá thắng</a></li>
+                                    <li role="presentation" class="divider"></li>
+                                    <li><a href="#"><span class="fa fa-angle-right"> </span> &nbsp Sản phẩm được đấu giá</a></li>
+                                    <li><a href="#"><span class="fa fa-angle-right"> </span> &nbsp Sản phẩm có người mua</a></li>
+
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    {{/if}}
+                {{else}}
+                {{/if}}
+
+                </div>
+
+        </div>
+    </nav>
+    {{{body}}}
+    <footer id="footer" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="footer">
+            <div class="container">
+                <section class="footer-up hidden-xs-down">
+                    <div class="row">
+                        <div class="col-lg-4 col-md-6 col-sm-4 col-xs-12 hidden-sm-down footer-vertical">
+                            <h5>Thông tin công ty</h5>
+
+                            <li><a href="https://golden-mart.bizwebvietnam.net/thong-tin-cong-ty">Thông tin công ty</a></li>
+
+                            <li><a href="https://golden-mart.bizwebvietnam.net/gioi-thieu-cong-ty">Giới thiệu công ty</a></li>
+
+                            <li><a href="https://golden-mart.bizwebvietnam.net/he-thong-cac-sieu-thi">Hệ thống các siêu thị</a></li>
+
+
+                        </div>
+                        <div class="col-lg-4 col-md-6 col-sm-4 col-xs-12 hidden-sm-down footer-vertical">
+                            <h5>Hỗ trợ khách hàng</h5>
+
+                            <li><a href="https://golden-mart.bizwebvietnam.net/lien-he-va-gop-y">Liên hệ và góp ý</a></li>
+
+                            <li><a href="https://golden-mart.bizwebvietnam.net/huong-dan-mua-hang-online">Hướng dẫn mua hàng online</a></li>
+
+                            <li><a href="https://golden-mart.bizwebvietnam.net/huong-dan-mua-hang-tra-gop">Hướng dẫn mua hàng trả góp</a></li>
+
+                            <li><a href="https://golden-mart.bizwebvietnam.net/quy-che-quan-ly-hoat-dong">Quy chế quản lý hoạt động</a></li>
+
+
+                        </div>
+                        <div class="col-lg-4 col-md-6 col-sm-4 col-xs-12 hidden-sm-down footer-vertical">
+                            <h5>Chính sách mua hàng</h5>
+
+                            <li><a href="https://golden-mart.bizwebvietnam.net/quy-dinh-chinh-sach">Quy định, chính sách</a></li>
+
+                            <li><a href="https://golden-mart.bizwebvietnam.net/chinh-sach-bao-hanh-doi-tra">Chính sách bảo hành - Đổi trả</a></li>
+
+                            <li><a href="https://golden-mart.bizwebvietnam.net/chinh-sach-hoi-vien">Chính sách hội viên</a></li>
+
+                            <li><a href="https://golden-mart.bizwebvietnam.net/giao-hang-va-lap-dat">Giao hàng và lắp đặt</a></li>
+
+
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+        <div class="ft-bottom">
+            <div class="container ft">
+                <div class="row">
+                    <div class="col-lg-12 col-xs-12 copyright">
+                        <p>© Bản quyền thuộc về <b style="color:#fff;">Team Ngáo</b>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        $('ul', '.row-noGutter' ).each(function() {
+            if($(this).attr('class') === $(this).parents(".row-noGutter").attr('id') )
+            {
+                $(this).parents(".menu-home").removeClass("hidden");
+            }
+        });
+        $('.col-md-4.text-xs-left.text-left.menu-home.hidden').remove();
+
+
+
+        $('a', 'ul').each(function(){
+            if($(this).attr('class') === $(this).parents("ul").attr('id') )
+            {
+                $(this).parents("li").removeClass("hidden");
+            }
+        })
+        $('li .hidden').remove();
+
+
+    </script>
+    <script>
+        $('#thoat').on('click', function () {
+            $('#frmLogout').submit();
+        });
+    </script>
+	</body>
+</html>
