@@ -1,0 +1,118 @@
+<html>
+<head>
+    <title>
+     Khôi phục mật khẩu
+ </title>
+ <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    {{#section 'css'}}
+        <link rel="stylesheet" type="text/css" href="/assests/bootstrap-3.3.7-dist/css/bootstrap.min.css" />
+        <link rel="stylesheet" type="text/css" href="/assests/font-awesome-4.7.0/css/font-awesome.min.css"/>
+        <link rel="stylesheet" type="text/css" href="/CSS/style.css">
+
+        <link rel="stylesheet" type="text/css" href="/CSS/myStyle.css"/>
+        <link rel="stylesheet" type="text/css" href="/CSS/home.css"/>
+    {{/section}}
+
+</head>
+<body>
+    <div class="brd">
+      <div class="container">
+        <div class="row">
+          <div class="inner">
+            <ul class="breadcrumbs">
+              <li class="home"> <a title="Quay lại trang chủ" href="/">Trang chủ</a></li>
+              
+              <i class="fa fa-angle-right" aria-hidden="true"></i>
+              <li><span>Đổi mật khẩu</span></li>
+          </ul>
+      </div>
+  </div>
+</div>
+</div>
+
+<section class="col-lg-12 col-md-12 col-sm-12 col-xs-12 login_area form_area">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 login_site">
+                <div id="demo" class="content">
+
+                    <form accept-charset="UTF-8" action="" id="customer_login" name="customer_login" method="post" >
+                        <h4 class="fw_600 txt_u hidden-sm-down">Khôi phục mật khẩu</h4>    
+                        <p style="line-height:15px;">Chúng tôi sẽ gửi về email của bạn để reset mật khẩu.</p>
+                        {{#if showError }}
+                            <div class="alert alert-warning alert-dismissible" role="alert">
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                {{ errorMsg }}
+                            </div>
+                        {{/if}}
+                        <ul class="form-list">
+                            <li>
+                                <label for="iemail">Email <span class="required">*</span></label>
+                                <input type="text" class="input-text" value="" title="email" name="email" id="email" required="">
+                            </li>
+                        </ul>
+                        <div class="buttons-set">
+                            <input type="submit" class="button login login_sign" value="  Gửi  " style="font-weight: bold;"></input>         &nbsp&nbsp&nbsp&nbsp
+                            <button id="trolai" type="button" class="button login login_sign"><span>Trở lại</span></button>
+                        </div>
+                    </form>
+                </div>
+            </div>   
+        </div>
+    </div>
+</div>
+</section>
+
+    <script type="text/javascript" src="/assests/jquery-3.1.1.min.js"></script>
+    <script type="text/javascript" src="/assests/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+    <script src="/assests/jquery-validation-1.12.0/jquery.validate.min.js" type="text/javascript"></script>
+     <script>
+                $(document).ready(function() {
+            $('#showmenu').click(function() {
+                $('#menucontentother').slideToggle('300');
+                return false;
+            });
+        });
+        $(".nav-drop").mouseenter(function() {
+            $("#menucontentother").show();
+        }).mouseleave(function() {
+            $("#menucontentother").hide();
+        });
+    </script>
+<script>
+    $('#customer_login').validate({
+
+        rules: {
+            email: {
+                required: true,
+                email: true
+            },
+        },
+
+        messages: {
+            email: {
+                required: 'Vui lòng nhập email',
+                email: 'Email không đúng định dạng'
+            },
+        },
+
+        errorElement: 'span',
+        errorClass: 'help-block',
+
+        highlight: function (element) {
+            $(element)
+                    .closest('.form-list')
+                    .addClass('has-error');
+        },
+
+        success: function (label) {
+            $(label)
+                    .closest('.form-list')
+                    .removeClass('has-error');
+
+            label.remove();
+        },
+    });
+</script>
+</body>

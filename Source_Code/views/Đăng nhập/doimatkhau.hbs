@@ -1,0 +1,145 @@
+<html>
+<head>
+    <title>
+       Đổi mật khẩu
+   </title>
+   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+{{#section 'css'}}
+   <link rel="stylesheet" type="text/css" href="/assests/bootstrap-3.3.7-dist/css/bootstrap.min.css" />
+   <link rel="stylesheet" type="text/css" href="/assests/font-awesome-4.7.0/css/font-awesome.min.css"/>
+   <link rel="stylesheet" type="text/css" href="/CSS/style.css">
+
+   <link rel="stylesheet" type="text/css" href="/CSS/myStyle.css"/>
+         <link rel="stylesheet" type="text/css" href="/CSS/home.css"/>
+{{/section}}
+</head>
+<body>
+<div class="brd">
+  <div class="container">
+    <div class="row">
+      <div class="inner">
+        <ul class="breadcrumbs">
+          <li class="home"> <a title="Quay lại trang chủ" href="/">Trang chủ</a></li>
+          
+          <i class="fa fa-angle-right" aria-hidden="true"></i>
+          <li class="home"> <a title="Tài khoản" href="/">Tài khoản</a></li>
+          <i class="fa fa-angle-right" aria-hidden="true"></i>
+          <li><span>Đổi mật khẩu</span></li>
+          
+          
+      </ul>
+  </div>
+</div>
+</div>
+</div>
+
+<section class="col-lg-12 col-md-12 col-sm-12 col-xs-12 login_area form_area">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 login_site"></div>
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 login_site">
+                <div id="demo" class="content">
+                    {{#if showError }}
+                        <div class="alert alert-warning alert-dismissible" role="alert">
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            {{ errorMsg }}
+                        </div>
+                    {{/if}}
+
+                    <form accept-charset="UTF-8" action="" id="customer_login" name="customer_login" method="post">
+                        <h4 class="fw_600 txt_u hidden-sm-down">Đổi mật khẩu</h4>                                 
+                        <ul class="form-list">
+                            <li>
+                                <label for="id">Tên đăng nhập <span class="required"></span></label>
+                                <input type="text" class="input-text" value="{{layoutModels.curUser.username}}"  name="tendangnhap" id="id" required="" readonly="readonly">
+                            </li>
+                            <li>
+                                <label for="pass">Mật khẩu cũ <span class="required">*</span></label>
+                                <input type="password" class="input-text form-group"  title="id" name="passcu" id="passcu">
+                            </li>
+                            <li>
+                                <label for="pass">Mật khẩu mới <span class="required">*</span></label>
+                                <input type="password" class="input-text form-group"  title="id" name="pass" id="pass">
+                            </li>
+                            <li>
+                                <label for="passconfirm">Nhập lại mật khẩu mới <span class="required"></span></label>
+                                <input type="password" class="input-text form-group"  title="passconfirm" name="passconfirm" id="passconfirm" >
+                            </li>
+                        </ul>
+                        <div class="buttons-set">
+                            <input id="reset" type="submit" class="button login login_sign" value="Đồng ý" style="font-weight: bold;"></input>         &nbsp&nbsp&nbsp&nbsp     
+                            <button id="trolai" type="button" class="button login login_sign" ><span>Trở lại</span></button>
+                        </div>
+                    </form>
+                </div>
+            </div>   
+        </div>
+    </div>
+</div>
+</section>
+     <script type="text/javascript" src="/assests/jquery-3.1.1.min.js"></script>
+    <script type="text/javascript" src="/assests/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+<script src="/assests/jquery-validation-1.12.0/jquery.validate.min.js" type="text/javascript"></script>
+ <script>
+                $(document).ready(function() {
+            $('#showmenu').click(function() {
+                $('#menucontentother').slideToggle('300');
+                return false;
+            });
+        });
+        $(".nav-drop").mouseenter(function() {
+            $("#menucontentother").show();
+        }).mouseleave(function() {
+            $("#menucontentother").hide();
+        });
+    </script>
+<script>
+    $('#customer_login').validate({
+        rules: {
+            passcu:{
+                required: true,
+                minlength: 6
+            },
+            pass: {
+                required: true,
+                minlength: 6
+            },
+            passconfirm: {
+                equalTo: '#pass'
+            },
+        },
+
+        messages: {
+            passcu: {
+                required: 'Vui lòng nhập mật khẩu',
+                minlength: 'Mật khẩu phải dài ít nhất 6 ký tự'
+            },
+            pass: {
+                required: 'Vui lòng nhập mật khẩu',
+                minlength: 'Mật khẩu phải dài ít nhất 6 ký tự'
+            },
+            passconfirm: {
+                equalTo: 'Mật khẩu nhập lại chưa khớp'
+            },
+        },
+
+        errorElement: 'span',
+        errorClass: 'help-block',
+
+        highlight: function (element) {
+            $(element)
+                    .closest('.form-group')
+                    .addClass('has-error');
+        },
+
+        success: function (label) {
+            $(label)
+                    .closest('.form-group')
+                    .removeClass('has-error');
+
+            label.remove();
+        },
+    });
+
+</script>
+</body>
