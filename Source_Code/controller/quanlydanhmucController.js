@@ -2,7 +2,7 @@
 var express = require('express'),
     danhmuc = require('../models/quanlydanhmucRepo'),
     q = require('q');
-var r = express.Router();
+//var r = express.Router();
 r.get('/', function(req, res) {
     if(req.session.isLogged===true)
     {
