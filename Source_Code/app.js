@@ -96,6 +96,7 @@ var server = app.listen(process.env.PORT || 6000,function () {
     console.log('Sever Is Running');
 	server.close(function () {
 		console.log('[x] Server Stopped');
+		 process.exit();
 	});
    // a.KiemTraSanPham();
 });
