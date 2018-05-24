@@ -1,0 +1,254 @@
+
+<html>
+<head>
+    <title>
+     Đăng ký tài khoản
+ </title>
+    {{#section 'css'}}
+        <link rel="stylesheet" type="text/css" href="/assests/bootstrap-3.3.7-dist/css/bootstrap.min.css" />
+        <link rel="stylesheet" type="text/css" href="/assests/font-awesome-4.7.0/css/font-awesome.min.css"/>
+        <link rel="stylesheet" type="text/css" href="/CSS/style.css">
+        <link rel="stylesheet" type="text/css" href="/CSS/bootstrap-datepicker3.css">
+        <link rel="stylesheet" type="text/css" href="/CSS/home.css"/>
+    {{/section}}
+ <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+    <style type="text/css">
+        label {
+            font-weight: normal !important;
+        }
+    </style>
+</head>
+<body>
+    <div class="brd">
+        <div class="container">
+        <div class="row">
+            <div class="inner">
+            <ul class="breadcrumbs">
+                <li class="home"> <a title="Quay lại trang chủ" href="/">Trang chủ</a></li>
+                
+                <i class="fa fa-angle-right" aria-hidden="true"></i>
+                <li><span>Đăng ký tài khoản</span></li>
+                
+                
+            </ul>
+        </div>
+        </div>
+        </div>
+        </div>
+
+<section class="main-container">
+    <div class=" container sign_main">
+        <div class="account-login">
+            <div class="page-title hidden-sm-down">
+                <h2 class="fw_600 txt_u">Đăng ký thông tin</h2>
+            </div>
+            {{#if showError }}
+                <div class="alert alert-warning alert-dismissible" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    {{ errorMsg }}
+                </div>
+            {{/if}}
+            <fieldset class="col2-set">
+                <div class="registered-users">
+                    <div class="content">
+                        <p id="errorFillres" style="margin-bottom: 10px; color: rgb(220, 51, 51); display: none;"></p>
+                        
+                        <form accept-charset="UTF-8" action="" name="dangky" method="post" id="dangky">
+                            <ul class="form-list">
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 " class="form-group">
+                                    <label for="txttendangnhap">Tên đăng nhập <span class="required">*</span></label>
+                                    <input type="text" class="input-text" name="tendangnhap" id="txttendangnhap" placeholder="Tên đăng nhập">
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 mobile" class="form-group">
+                                    <label for="txthoten">Họ và tên<span class="required">*</span></label>
+                                    <input type="text" class="input-text" id="txthoten" name="hoten" placeholder="Họ và tên">
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 mobile" class="form-group">
+                                    <label for="txtgioitinh">Giới tính<span class="required">*</span></label>
+                                    <select class="form-control" name="gioitinh" id="txtgioitinh" placeholder="Giới tính">
+                                       <option value="Nam">Nam</option>
+                                       <option value="Nữ">Nữ</option>                                    </select>
+                                </div>
+                                
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 mobile" class="form-group">
+                                    <label for="txtPWD">Mật khẩu<span class="required hidden-sm-down">*</span></label>
+                                    <input type="password" class="input-text" id="txtPWD" name="rawPWD" placeholder="Password" >
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 mobile" class="form-group">
+                                    <label for="txtCPWD">Nhập lại mật khẩu<span class="required hidden-sm-down">*</span></label>
+                                    <input type="password" class="input-text" id="txtCPWD" name="cPWD" placeholder="Nhập lại Password">
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 mobile" class="form-group">
+                                    <label for="txtEmail">Email<span class="required">*</span></label>
+                                    <input type="text" class="input-text" id="txtEmail" name="email" placeholder="Email">
+                                </div>
+
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 mobile" class="form-group">
+                                    <label for="txtdatepicker">Ngày sinh<span></span></label>
+                                    <div id="txtdatepicker" class="input-group date" data-date-format="dd-mm-yyyy">
+                                        <input class="form-control" readonly="" type="text" id="txtdatepicker" placeholder="dd/mm/yyyy" name="datepicker">
+                                        <span id="txtdatepicker" class="input-group-addon" style="cursor: pointer;">
+                                            <i class="glyphicon glyphicon-calendar"></i></span>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 mobile" class="form-group">
+                                    <label for="txtsdt">Số điện thoại<span class="required"></span></label>
+                                    <input type="text" name="sdt" id="txtsdt" placeholder="Số điện thoại" class="input-text">
+                                </div>
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" class="form-group">
+                                    <label for="txtdc">Địa chỉ<span class="required"></span></label>
+                                    <input type="text" class="input-text" id="txtdc" name="dc" placeholder="Địa chỉ">
+                                </div>
+
+                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 form-group">
+                                    <div  class="g-recaptcha" data-sitekey="6LcvtSYUAAAAAJdVqfvmUsDAcx794QLpkOLev9JE" data-callback="recaptchaCallback"></div>
+                                    <input type="hidden" class="hiddenRecaptcha required" name="hiddenRecaptcha" id="hiddenRecaptcha">
+                                </div>
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="text-align: center" class="form-group">
+                                    <input id="dangky" value="Đăng ký" type="submit" class="button login login_sign form-group" style="font-weight: bold;"></input>
+                                    <button id="trolai" value="Trở lại" type="button" class="button login login_sign form-group" ><span> Trở lại </span></button>
+
+                                </div>
+
+                            </ul>
+
+
+
+                    </form>
+                </div>
+            </div>
+        </fieldset>
+    </div>
+    </div>
+</section>
+
+    
+    <script type="text/javascript" src="/assests/jquery-3.1.1.min.js"></script>
+    <script type="text/javascript" src="/assests/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/JS/bootstrap-datepicker.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery.form/3.51/jquery.form.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+
+     <script>
+        $(document).ready(function() {
+            $('#showmenu').click(function() {
+                $('#menucontentother').slideToggle('300');
+                return false;
+            });
+        });
+        $(".nav-drop").mouseenter(function() {
+            $("#menucontentother").show();
+        }).mouseleave(function() {
+            $("#menucontentother").hide();
+        });
+
+    </script>
+
+    <script>
+$(function () {
+  $("#txtdatepicker").datepicker({
+        autoclose: true, 
+        todayHighlight: true
+  }).datepicker('update', new Date());
+});
+
+    </script>
+
+    <script type="text/javascript" src="/JS/bootstrap-datepicker.min.js"></script>
+    <script src="/assests/jquery-validation-1.12.0/jquery.validate.min.js" type="text/javascript"></script>
+    <script>
+        $('#dangky').validate({
+            ignore: ".ignore",
+            rules: {
+                tendangnhap: {
+                    required: true,
+                    minlength: 4
+                },
+                rawPWD: {
+                    required: true,
+                    minlength: 6
+                },
+                cPWD: {
+                    equalTo: '#txtPWD'
+                },
+                hoten: {
+                    required: true
+                },
+                email: {
+                    required: true,
+                    email: true
+                },
+                datepicker: {
+                    required: true
+                },
+                dc:{
+                    required: true
+                },
+                hiddenRecaptcha: {
+                    required: function () {
+                        if (grecaptcha.getResponse() == '') {
+                            return true;
+                        } else {
+                            return false;
+                        }
+                    }
+                }
+            },
+
+            messages: {
+                tendangnhap: {
+                    required: 'Vui lòng nhập username.',
+                    minlength: 'Tên đăng nhập phải dài ít nhất 4 ký tự'
+                },
+                rawPWD: {
+                    required: 'Vui lòng nhập mật khẩu',
+                    minlength: 'Mật khẩu phải dài ít nhất 6 ký tự'
+                },
+                cPWD: {
+                    equalTo: 'Mật khẩu nhập lại chưa khớp'
+                },
+                hoten: {
+                    required: 'Vui lòng nhập họ tên'
+                },
+                Email: {
+                    required: 'Vui lòng nhập email',
+                    email: 'Email không đúng định dạng'
+                },
+                datepicker: {
+                    required: 'Vui lòng chọn ngày sinh'
+                },
+                dc:{
+                    required: 'Vui lòng nhập địa chỉ'
+                },
+                hiddenRecaptcha:
+                        {
+                            required: 'Bạn là Robot?'
+                        },
+            },
+
+            errorElement: 'span',
+            errorClass: 'help-block',
+
+            highlight: function (element) {
+                $(element)
+                        .closest('.form-group')
+                        .addClass('has-error');
+            },
+
+            success: function (label) {
+                $(label)
+                        .closest('.form-group')
+                        .removeClass('has-error');
+
+                label.remove();
+            },
+        });
+        function recaptchaCallback() {
+            $('#hiddenRecaptcha').valid();
+        };
+    </script>
+</body>
+</html>
