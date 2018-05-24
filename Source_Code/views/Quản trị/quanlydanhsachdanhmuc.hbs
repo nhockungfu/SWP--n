@@ -1,0 +1,208 @@
+<html>
+<head>
+    <title>Quản lý danh mục sản phẩm</title>
+    {{#section 'css'}}
+        <link rel="stylesheet" type="text/css" href="/assests/bootstrap-3.3.7-dist/css/bootstrap.min.css" />
+        <link rel="stylesheet" type="text/css" href="/assests/font-awesome-4.7.0/css/font-awesome.min.css"/>
+        <link rel="stylesheet" type="text/css" href="/CSS/style.css">
+        <link rel="stylesheet" type="text/css" href="/CSS/home.css"/>
+        <link rel="stylesheet" type="text/css" href="/CSS/danhgianhanxetcomment.css"/>
+        <link rel="stylesheet" type="text/css" href="/CSS/danhgia.css"/>
+    {{/section}}
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+</head>
+
+<body id="" class="cms-index-index cms-home-page">
+
+
+<div class="brd">
+    <div class="container">
+        <div class="row">
+            <div class="inner">
+                <ul class="breadcrumbs">
+                    <li class="home"> <a title="Quay lại trang chủ" href="/">Trang chủ</a></li>
+                    <i class="fa fa-angle-right" aria-hidden="true"></i>
+                    <li> <span>Quản lý danh mục sản phẩm</span></li>
+
+
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <h3 class="fw_600 txt_u" style="font-weight: bold;margin-left: 20px;font-size:18px;font-family: Arial">QUẢN LÝ DANH MỤC SẢN PHẨM </h3>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
+            {{#if showError }}
+                <div class="alert alert-warning alert-dismissible" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    {{ errorMsg }}
+                </div>
+            {{/if}}
+            <table class="table table-bordered" style="text-align: center;font-weight: bold;">
+                <!-- Đồng hồ và trang sức -->
+
+                    <tr>
+                        <td>Id loại sản phẩm 2</td>
+                        <td>Id loại sản phẩm 3</td>
+                        <td>Tên danh mục</td>
+                    </tr>
+                {{#each bac3}}
+                <tr>
+                    <td>{{LOAISANPHAM2_idLOAISANPHAM2}}</td>
+                    <td>{{idLOAISP3}}</td>
+                    <td>{{tensanpham}}</td>
+                    <td>
+                        <a href="/quanlidanhmuc/sua?id={{idLOAISP3}}"><button type="button" class="btn btn-info"><span class="glyphicon glyphicon-wrench" title="Sửa danh mục"></span></button></a>
+                        &nbsp
+                        <a href="javascript:;" class="btn btn-info xoadanhmuc" data-id="{{idLOAISP3}}" title="Xóa danh mục"><span class="glyphicon glyphicon-remove"></span></a>
+                    </td>
+                </tr>
+
+                {{/each}}
+
+                <a style="display: scroll;position:fixed;margin-left: 900px;color: blue " href="#themdanhmuc" title="Thêm danh mục" data-toggle="modal"><span>Thêm danh mục</span><img src="/Images/add.png" ></a>
+
+                <div class="modal fade" id="themdanhmuc" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="line-height: 1">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+
+                            <div class="modal-header modal-header-success">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">[ × ]</button>
+                                <h2><span class="glyphicon glyphicon-plus" style="margin-left:250px"></span> Thêm danh mục sản phẩm </h2>
+                            </div>
+
+                            <div class="modal-body">
+                                <form accept-charset="UTF-8" action="" id="customer_login" name="customer_register" method="post" >
+                                    <h4 class="fw_600 txt_u hidden-sm-down">Thêm danh sách danh mục</h4>
+                                    <ul class="form-list">
+                                        <li>
+                                            <label for="id">Chọn danh sách danh mục cấp 1</label>
+                                            <select class="form-control" id="bac1">
+                                            {{#each bac1}}
+                                                <option value="{{idLOAISANPHAM1}}">{{tensanpham}}</option>
+                                            {{/each}}
+                                            </select>
+                                        </li>
+                                        <li>
+                                            <label for="id">Chọn danh sách danh mục cấp 2</label>
+                                            <select class="form-control" name="values" id="bac2">
+                                                {{#each bac2}}
+                                                <option value="{{idLOAISANPHAM2}}" id="{{LOAISANPHAM1_idLOAISANPHAM1}}" >{{tensanpham}}</option>
+                                                {{/each}}
+                                            </select>
+                                        </li>
+                                        <li>
+                                            <label for="id">Tên danh sách cần thêm</label>
+                                            <input type="text" class="input-text" title="Tên danh sách cần thêm" name="tendanhmuc" id="tendanhmuc" required="">
+                                        </li>
+                                    </ul>
+                                    <div class="buttons-set" style="margin-left: 250px">
+                                        <input id="adddanhmuc" name="login" type="submit" class="button login login_sign" value="Thêm" style="font-weight: bold;"></input>
+                                        <a href="#"><button class="button login login_sign" type="button" class="close" data-dismiss="modal" aria-hidden="true"><span> Hủy </span></button></a>
+                                    </div>
+                                </form>
+                            </div>
+                        </div><!-- /.modal-content -->
+                    </div><!-- /.modal-dialog -->
+                </div><!-- /.modal -->
+            </table>
+        </div>
+    </div>
+
+</div>
+<form method="post" action="/quanlidanhmuc/xoa" id="frmxoadanhmuc">
+    <input type="hidden" name="id" id="txtDelCatId">
+</form>
+
+<script type="text/javascript" src="/JS/jquery.flexslider.js"></script>
+<script type="text/javascript" src="/JS/common.js"></script>
+<script type="text/javascript" src="/JS/js_custome.js"></script>
+<script type="text/javascript" src="/JS/owl.carousel.min.js"></script>
+<script type="text/javascript" src="/assests/jquery-3.1.1.min.js"></script>
+<script type="text/javascript" src="/assests/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+
+<script>
+    $(document).ready(function() {
+        $('#showmenu').click(function() {
+            $('#menucontentother').slideToggle('300');
+            return false;
+        });
+    });
+    $(".nav-drop").mouseenter(function() {
+        $("#menucontentother").show();
+    }).mouseleave(function() {
+        $("#menucontentother").hide();
+    });
+
+</script>
+<script>
+
+    var boolean = false;
+
+    var c ={};
+    $('#bac2 option').each(function () {
+        var a = [];
+        var a1 = +this.value;
+        var a2 = $(this).text()
+        var b = {};
+        b[a1] = a2;
+        a.push(b)
+        c = b;
+    });
+
+    $('#bac1').change(function(){
+
+        var fastInternet = document.getElementById('bac2');
+
+        if(boolean == true)
+        {
+
+            for(var i = 0; i < 10; i++)
+            {
+                $('#bac2').append($('<option>', {
+                    value: i,
+                    text: "Option "+i
+                }));
+            }
+            boolean = false;
+
+        }
+
+        if(boolean == false)
+        {
+            var value = $(this).val();
+            for ( var i = 0; i < fastInternet.options.length; i++)
+            {
+                var value1 = fastInternet.options[i].id;
+
+                if(value1 != value){
+                    fastInternet.remove(i);
+                    i--;
+                }
+            }
+            boolean = true;
+            alert(boolean);
+            console.log(b);
+        }
+
+    });
+
+</script>
+<script type="text/javascript">
+    $('.xoadanhmuc').on('click', function() {
+        var id = $(this).data('id');
+        $('#txtDelCatId').val(id);
+        $('#frmxoadanhmuc').submit();
+    });
+</script>
+
+</body>
+</html>

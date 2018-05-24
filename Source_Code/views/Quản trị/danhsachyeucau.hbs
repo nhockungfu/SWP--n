@@ -1,0 +1,122 @@
+    <html>
+    <head>
+        <title>Quản lý danh sách danh mục</title>
+        {{#section 'css'}}
+            <link rel="stylesheet" type="text/css" href="/assests/bootstrap-3.3.7-dist/css/bootstrap.css" />
+            <link rel="stylesheet" type="text/css" href="/assests/font-awesome-4.7.0/css/font-awesome.min.css"/>
+            <link rel="stylesheet" type="text/css" href="/CSS/style.css">
+            <link rel="stylesheet" type="text/css" href="/CSS/home.css"/>
+        {{/section}}
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    </head>
+
+    <body id="" class="cms-index-index cms-home-page">
+    <form method="get" action="/quanliyeucau/duyet" id="duyet">
+        <input type="hidden" name="idUSER" id="duyetin">
+    </form>
+    <form method="get" action="/quanliyeucau/tuchoi" id="tuchoi">
+        <input type="hidden" name="idUSER" id="tuchoiin">
+    </form>
+        <div class="brd">
+            <div class="container">
+                <div class="row">
+                    <div class="inner">
+                        <ul class="breadcrumbs">
+                            <li class="home"> <a title="Quay lại trang chủ" href="/">Trang chủ</a></li>
+                            <i class="fa fa-angle-right" aria-hidden="true"></i>
+                            <li> <span>Danh sách yêu cầu</span></li>
+
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <div class="container">
+            <div class="row">
+                <h3 class="fw_600 txt_u" style="font-weight: bold;margin-left: 20px;font-size:18px;font-family: Arial">QUẢN LÝ DANH SÁCH YÊU CẦU </h3>
+            </div>
+            <div class="row">
+            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+            </div>
+            <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
+                  <table class="table table-bordered" >
+                <thead style="background: #6ed430;color: black;">
+                    <tr>
+                        <th width="20%">Tên đăng nhập</th>
+                        <th width="20%">Họ và tên</th>
+                        <th>Thời gian yêu cầu</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {{#each yeucau}}
+                    <tr>
+                        <td>{{tendangnhap}}</td>
+                        <td>{{hoten}}</td>
+                        <td>{{thoigian}} </td>
+                        <td><a role="button" data-toggle="collapse" data-parent="#accordion" href="#{{tendangnhap}}" aria-expanded="true" aria-controls="{{tendangnhap}}" class="collapsed" style="color: blue" id="chitiet">Xem chi tiết</a>
+                    </td>
+                    <td><button type="button" class="btn btn-danger" style="font-weight: bold;" data-id="{{idUSER}}" onclick="submitduyet(this) ">&nbsp Duyệt &nbsp</button> </td>
+                    <td><button type="button" class="btn btn-danger" style="font-weight: bold;" data-id="{{idUSER}}" onclick="submittuchoi(this)">Từ chối</button></td>
+                    </tr>
+                    <tr>
+                    <td id="{{tendangnhap}}" class="panel-collapse collapse" role="tabpanel"  colspan="4">
+                       {{comment}}
+                    </td>
+                    </tr>
+                {{/each}}
+                </tbody>
+            </table>
+            </div>
+          
+            </div>
+    </div>
+
+        <script type="text/javascript" src="/JS/jquery.flexslider.js"></script>
+        <script type="text/javascript" src="/JS/common.js"></script>
+        <script type="text/javascript" src="/JS/js_custome.js"></script>
+        <script type="text/javascript" src="/JS/owl.carousel.min.js"></script>
+        <script type="text/javascript" src="/assests/jquery-3.1.1.min.js"></script>
+        <script type="text/javascript" src="/assests/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+        <script>
+            $(document).ready(function() {
+                $('#showmenu').click(function() {
+                    $('#menucontentother').slideToggle('300');
+                    return false;
+                });
+            });
+            $(".nav-drop").mouseenter(function() {
+                $("#menucontentother").show();
+            }).mouseleave(function() {
+                $("#menucontentother").hide();
+            });
+
+        </script>
+        <script type="text/javascript">
+
+            $('.collapsed').click(function(){
+                var $this = $(this);
+                $this.toggleClass('collapsed');
+                if($this.hasClass('collapsed')){
+                    $this.text('Xem chi tiết');
+                } else {
+                    $this.text('Ẩn chi tiết');
+                }
+            });
+
+        </script>
+    <script type="text/javascript">
+    function submitduyet(elem) {
+        var id = $(elem).data('id');
+        $('#duyetin').val(id);
+        $('#duyet').submit();
+    }
+    function submittuchoi(elem) {
+        var id = $(elem).data('id');
+        $('#tuchoiin').val(id);
+        $('#tuchoi').submit();
+    }
+    </script>
+    </body>
+    </html>
