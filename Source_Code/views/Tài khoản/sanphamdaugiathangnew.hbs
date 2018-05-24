@@ -1,0 +1,302 @@
+<html>
+<head>
+    <title>
+        Sản phẩm đấu giá thắng
+    </title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    {{#section 'css'}}
+        <link rel="stylesheet" type="text/css" href="/assests/bootstrap-3.3.7-dist/css/bootstrap.min.css" />
+        <link rel="stylesheet" type="text/css" href="/assests/font-awesome-4.7.0/css/font-awesome.min.css"/>
+
+        <link rel="stylesheet" type="text/css" href="/CSS/popup_cart_desktop.css">
+        <link rel="stylesheet" type="text/css" href="/CSS/owl.carousel.css">
+        <link rel="stylesheet" type="text/css" href="/CSS/owl.theme.min.css">
+        <link rel="stylesheet" type="text/css" href="/CSS/css.css">
+        <link rel="stylesheet" type="text/css" href="/CSS/jgrowl.css">
+        <link rel="stylesheet" type="text/css" href="/CSS/style.css">
+
+        <link rel="stylesheet" type="text/css" href="/CSS/home.css" />
+        <link rel="stylesheet" type="text/css" href="/CSS/thongtincanhan.css" />
+        <link rel="stylesheet" type="text/css" href="/CSS/nhomsanpham.css" />
+        <link rel="stylesheet" type="text/css" href="/CSS/sanphamyeuthich.css" />
+        <link rel="stylesheet" type="text/css" href="/CSS/danhgianhanxetcomment.css" />
+        <link rel="stylesheet" type="text/css" href="/CSS/danhgia.css" />
+        <style>
+            body{
+                line-height: normal;
+            }
+            #menucontentother
+            {
+                margin-top: -7px!important;
+            }
+        </style>
+    {{/section}}
+</head>
+<body>
+<div class="brd">
+    <div class="container">
+        <div class="row">
+            <div class="inner">
+                <ul class="breadcrumbs">
+                    <li class="home"> <a title="Quay lại trang chủ" href="/">Trang chủ</a></li>
+                    <i class="fa fa-angle-right" aria-hidden="true"></i>
+                    <li> <span>Tài khoản</span></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+
+    <div class="col-md-3 col-lg-3">
+        <div class="block-title block">
+            <h5>
+                <span>Tài khoản</span>
+            </h5>
+        </div>
+        <ul class="nav nav-pills nav-stacked">
+
+
+            <li><a href="/taikhoan/thongtincanhan"> Thông tin cá nhân </a></li>
+
+
+            <li ><a  href="/taikhoan/chitietdanhgia"> Chi tiết đánh giá </a></li>
+
+            <div class="block-title block" style="margin-top: 20px">
+                <h5>
+                    <span>Mua</span>
+                </h5>
+            </div>
+
+            <li><a  href="/taikhoan/splike"> Sản phẩm yêu thích </a></li>
+            <li><a  href="sanphamdaugianew.html"> Sản phẩm đấu giá </a></li>
+            <li><a  href="/taikhoan/daugiathang"> Sản phẩm đấu giá thắng </a></li>
+
+
+            <div class="block-title block" style="margin-top: 20px">
+                <h5>
+                    <span>Bán</span>
+                </h5>
+            </div>
+            {{#if layoutModels.isBan}}
+                <li><a data-toggle="pill" href="/dangban"> Đăng bán </a></li>
+            {{else}}
+                <li><a data-toggle="pill" href="#"> Đăng bán </a></li>
+            {{/if}}
+            <li><a data-toggle="pill" href="sanphamconhannew.html"> Sản phẩm còn hạn </a></li>
+            <li><a data-toggle="pill" href="sanphamconguoimuanew.html"> Sản phẩm có người mua </a></li>
+        </ul>
+    </div>
+
+
+
+
+    <div class="col-md-9 col-lg-9">
+
+
+
+
+
+
+
+        <!-- sản phẩm đấu giá thắng -->
+        <div id="sanphamdaugiathang" class="tab-pane fade in active">
+
+            <div class="block-title block">
+                <h5>
+                    <span>Sản phẩm đấu giá thắng</span>
+                </h5>
+            </div>
+            {{#if NoProduct}}
+                <h1>Không có sản phẩm nào</h1>
+
+            {{else}}
+                <div class="col-lg-12 col-md-12 collection_container list-items">
+                    <table width="100%">
+                        <tbody>
+                        <tr >
+                            <th colspan="2">Mô tả sản phẩm</th>
+                            <th> Giá mua </th>
+                            <th> Người bán</th>
+                            <th> Số lượt đấu giá</th>
+                            <th>  </th>
+                        </tr>
+                        <!--sản phẩm 1-->
+                        {{#each sanphamthang}}
+                            <tr>
+                                <td class="mota" style="text-align: center">
+                                    <a href="#" title="Samsung Galaxy Note 5">
+                                        <img src="/Images/dienthoai1_1_medium.jpg" alt="{{tensanpham}}">
+                                    </a>
+                                </td>
+                                <td class="mota">
+                                    <div class="item_loop_list_title fs15">
+                                        <h3 class="fw_600"><a href="/sanphamloai1/detail/{{idSANPHAM}}" title="{{tensanpham}}">{{tensanpham}} </a></h3>
+                                    </div>
+                                    <div class="product-seller">
+                                        <p> Người bán:
+                                            <a href="#">{{tendangnhap}}</a>
+                                        </p>
+                                    </div>
+                                    <div class="product-sub">
+                                        <p> Mô tả:{{motasanphamngangon}}</p>
+                                    </div>
+                                </td>
+                                <td style="font-size: 15px"> {{gia}}</td>
+                                <td style="font-size: 15px"> <a href="#" style="color: #843534">{{tendangnhap}}</a> </td>
+                                <td style="font-size: 15px">{{soluotdaugia}}
+
+
+                                    <p class="btn_see" style="margin-top: 40px">
+                                        <a href="#{{tendangnhap}}" data-toggle="modal">
+                                            <span class="glyphicon glyphicon-gift" aria-hidden="true"></span>
+                                            Đánh giá </a>
+                                    </p>
+
+
+                                    <div class="modal fade" id="{{tendangnhap}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content" style="width: 800px">
+
+                                                <div class="modal-header modal-header-success">
+                                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">[ × ]</button>
+                                                    <h2><i class="glyphicon glyphicon-comment"></i> Đánh giá </h2>
+                                                </div>
+
+                                                <div class="modal-body">
+                                                    <form method="get">
+
+
+                                                        <div class="col-md-12 radio-choices">
+                                                            <div class="col-md-7">
+
+                                                                <b>Xin vui lòng chia sẻ đánh giá của bạn về người bán</b>
+                                                                <br>
+                                                                <br>
+                                                                Nhận xét về người bán này
+                                                                <br>
+                                                                <br>
+
+
+                                                                <label class="radio-inline"><input type="radio" name="optradio" style="margin-top: -2px;" value="1"> Tốt </label>
+                                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                                <label class="radio-inline"><input type="radio" name="optradio" style="margin-top: -2px;" value="0"> Xấu </label>
+                                                                <br><br>
+                                                                Mô tả đánh giá
+                                                                <br>
+                                                                <textarea class="required ui-inputText" placeholder="Nhập mô tả tại đây" name="comment" id="comment" style="width: 370px; height: 187px;"></textarea>
+                                                                <div class="ratRev_form_row__desc">
+                                                                    <h5>  Nhận xét của bạn sẽ được đăng lên với chế độ ẩn danh                        </h5></div>
+
+
+                                                            </div>
+
+
+
+
+
+
+
+
+
+
+                                                            <div class="col-md-5">
+
+
+                                                                <b>Để viết 1 đánh giá chất lượng</b>
+                                                                <br>
+                                                                <br>
+                                                                <b>Bạn nên:</b>
+                                                                <br>
+                                                                <br>
+                                                                - Viết đánh giá dựa trên kinh nghiệm
+                                                                <br>
+                                                                của bản thân.
+                                                                <br>
+                                                                - Cho biết "tại sao" bạn lại cảm thấy như vậy về sản phẩm.
+                                                                <br>
+                                                                <br>
+                                                                <b>Bạn không nên:</b>
+                                                                <br>
+                                                                - Chia sẻ những thông tin không liên
+                                                                <br>
+                                                                quan đến sản phẩm.
+                                                                <br>
+                                                                - Sử dụng trái phép những thông tin liên quan
+                                                                <br>
+                                                                đến bản quyền và thương hiệu.
+                                                                <br><br>
+                                                            </div>
+
+                                                        </div><!-- ends col-12 -->
+                                                        <div class="clearfix"></div>
+                                                        <div class="modal-footer" style="text-align: center">
+                                                            <button type="submit" class="btn btn-primary " data-next="modal">Gửi nhận xét</button>
+                                                            <button type="button" class="btn btn-danger " data-dismiss="modal">&nbsp Hủy &nbsp</button>
+                                                        </div>
+                                                        <input type="hidden" value="{{idUSER}}" name="iduser">
+                                                        <input type="hidden" value="{{idSANPHAM}}" name="idsp">
+                                                    </form>
+                                                </div><!-- /.modal-content -->
+                                            </div><!-- /.modal-dialog -->
+                                        </div><!-- /.modal -->
+
+                            <tr>
+                                <td colspan="6" class="border-under">
+                                </td>
+                            </tr>
+                            </td>
+                        {{/each}}
+
+                        </tbody>
+                    </table>
+                </div>
+            {{/if}}
+
+        </div>
+
+
+
+
+
+
+    </div>
+
+</div>
+
+</div>  <!-- của container -->
+
+
+
+<script type="text/javascript" src="/assests/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/assests/jquery-3.1.1.min.js"></script>
+<script type="text/javascript" src="/JS/productreviews.min.js"></script>
+<script type="text/javascript" src="/JS/owl_product_details.js"> </script>
+<script type="text/javascript" src="/JS/owl.carousel.min.js"></script>
+<script type="text/javascript" src="/assests/jquery-3.1.1.min.js"></script>
+<script type="text/javascript" src="/assests/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../../public/assests/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../../public/assests/jquery-3.1.1.min.js"></script>
+<script type="text/javascript" src="../../public/JS/productreviews.min.js"></script>
+<script type="text/javascript" src="../../public/JS/owl_product_details.js"> </script>
+<script type="text/javascript" src="../../public/JS/owl.carousel.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('#showmenu').click(function() {
+            $('#menucontentother').slideToggle('300');
+            return false;
+        });
+    });
+    $(".nav-drop").mouseenter(function() {
+        $("#menucontentother").show();
+    }).mouseleave(function() {
+        $("#menucontentother").hide();
+    });
+
+</script>
+
+
+
+
+
+</body>

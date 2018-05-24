@@ -1,0 +1,285 @@
+<html>
+<head>
+  <title>
+     Sản phẩm yêu thích
+  </title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    {{#section 'css'}}
+  <link rel="stylesheet" type="text/css" href="/assests/bootstrap-3.3.7-dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" type="text/css" href="/assests/font-awesome-4.7.0/css/font-awesome.min.css"/>
+
+  
+  <link rel="stylesheet" type="text/css" href="/CSS/popup_cart_desktop.css">
+  <link rel="stylesheet" type="text/css" href="/CSS/owl.carousel.css">
+  <link rel="stylesheet" type="text/css" href="/CSS/owl.theme.min.css">
+  <link rel="stylesheet" type="text/css" href="/CSS/css.css">
+  <link rel="stylesheet" type="text/css" href="/CCS/jgrowl.css">
+  <link rel="stylesheet" type="text/css" href="/CSS/style.css">
+
+    <link rel="stylesheet" type="text/css" href="/CSS/home.css"/>
+    <link rel="stylesheet" type="text/css" href="/CSS/thongtincanhan.css"/>
+    <link rel="stylesheet" type="text/css" href="/CSS/nhomsanpham.css"/>
+    <link rel="stylesheet" type="text/css" href="/CSS/danhgianhanxetcomment.css"/>
+  <link rel="stylesheet" type="text/css" href="/CSS/danhgia.css"/>
+    <style>
+        #menucontentother
+        {
+            margin-top:-7px!important;
+        }
+    </style>
+{{/section}}
+
+</head>
+<body>
+  <div class="brd">
+    <div class="container">
+      <div class="row">
+        <div class="inner">
+          <ul class="breadcrumbs">
+            <li class="home"> <a title="Quay lại trang chủ" href="/">Trang chủ</a></li>
+            <i class="fa fa-angle-right" aria-hidden="true"></i>
+            <li> <span>Sản phẩm yêu thích</span></li>
+
+
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+
+      <div class="col-md-3 col-lg-3">
+          <div class="block-title block">
+              <h5>
+                  <span>Tài khoản</span>
+              </h5>
+          </div>
+          <ul class="nav nav-pills nav-stacked">
+              
+
+              <li><a  href="/taikhoan/thongtincanhan"> Thông tin cá nhân </a></li>
+
+              
+              <li ><a  href="/taikhoan/chitietdanhgia"> Chi tiết đánh giá </a></li>
+         
+          <div class="block-title block" style="margin-top: 20px">
+              <h5>
+                  <span>Mua</span>
+              </h5>
+          </div>
+
+              <li><a  href="#"> Sản phẩm yêu thích </a></li>
+              <li><a  href="sanphamdaugianew.html"> Sản phẩm đấu giá </a></li>
+              <li><a  href="/taikhoan/daugiathang"> Sản phẩm đấu giá thắng </a></li>
+              
+         
+          <div class="block-title block" style="margin-top: 20px">
+              <h5>
+                  <span>Bán</span>
+              </h5>
+          </div>
+              {{#if layoutModels.isBan}}
+                  <li><a data-toggle="pill" href="/dangban"> Đăng bán </a></li>
+              {{else}}
+                  <li><a data-toggle="pill" href="#"> Đăng bán </a></li>
+              {{/if}}
+              <li><a data-toggle="pill" href="sanphamconhannew.html"> Sản phẩm còn hạn </a></li>
+              <li><a data-toggle="pill" href="sanphamconguoimuanew.html"> Sản phẩm có người mua </a></li>
+          </ul>
+      </div>
+
+
+
+
+    <div class="col-md-9 col-lg-9">
+
+
+
+
+
+
+
+
+
+ <!-- sản phẩm yêu thích -->
+    <div id="sanphamyeuthich" class="tab-pane fade in active">
+      
+       <div class="block-title block">
+            <h5>
+                <span>Sản phẩm yêu thích</span>
+            </h5>
+        </div>
+        <div class="col-lg-12 col-md-12 collection_container list-items">
+            <table width="100%" style="line-height: normal">
+                <tbody>
+                <tr >
+                    <th colspan="2">Mô tả sản phẩm</th>
+                    <th> Giá hiện tại </th>
+                    <th> Giá mua ngay </th>
+                    <th> Số lượt đấu giá </th>
+                    <th> Thời gian còn lại</th>
+                </tr>
+                <!--sản phẩm 1-->
+                {{#each productsYeuThich}}
+                    <tr id="daugia{{idSANPHAM}}" class="daugia">
+                        <td class="mota" style="text-align: center; width: 10%">
+                            <a href="/sanphamloai1/detail/{{idSANPHAM}}" title="{{tensanpham}}">
+                                <img src="{{hinhanh1}}" style="width: 100px; height: 100px" alt="{{tensanpham}}">
+                            </a>
+                        </td>
+                        <td class="mota" width="30%" style="padding-left: 10px">
+                            <div class="item_loop_list_title fs15">
+                                <h3 class="fw_600"><a href="/sanphamloai1/detail/{{idSANPHAM}}" title="{{tensanpham}}"> {{tensanpham}} </a></h3>
+                            </div>
+                            <div class="product-seller">
+                                <p> Người bán:
+                                    <a href="#">{{tendangnhap}}</a>
+                                </p>
+                            </div>
+                            <div class="product-sub" title="{{motasanphamngangon}}">
+                                <p> Mô tả:{{motasanphamngangon}}</p>
+                            </div>
+                        </td>
+                        <td>
+                            {{tiencaonhat}}
+                        </td>
+                        <td> <span> {{giamualien}} </span></td>
+                        <td> {{soluotdaugia}} </td>
+                        <td>
+                            <div class="time daugia{{idSANPHAM}}"  style="color: red; margin-top: 8px; margin-right: -7px" value="{{thoigiankethuc}}">
+                            </div>
+                            <p class="btn_see" style="text-align: center">
+                                <a href="/sanphamloai1/detail/{{idSANPHAM}}" title="Xem chi tiết sản phẩm">
+                                    <span class="glyphicon glyphicon-gift" aria-hidden="true"></span>
+                                    Xem chi tiết</a>
+                            </p>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="6" class="border-under">
+                        </td>
+                    </tr>
+                {{/each}}
+                </tbody>
+            </table>
+        </div>
+        <div class="col-lg-12 col-md-12 menu">
+            <ul class="pagination">
+                {{#if showPrevPage}}
+                    <li>
+                        <a href="?page={{prevPage}}" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+                {{/if}}
+                {{#each pages }}
+                    {{#if isActive }}
+                        <li class="active">
+                            <a href="?page={{pageValue}}">{{pageValue}}</a>
+                        </li>
+                    {{else}}
+                        <li>
+                            <a href="?page={{pageValue}}">{{pageValue}}</a>
+                        </li>
+                    {{/if}}
+                {{/each}}
+                {{#if showNextPage }}
+                    <li>
+                        <a href="?page={{nextPage}}" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+                {{/if}}
+            </ul>
+        </div>
+</div>
+
+  </div>  <!-- của container -->
+
+
+
+  
+  <script type="text/javascript" src="/assests/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="/assests/jquery-3.1.1.min.js"></script>
+  <script type="text/javascript" src="/JS/productreviews.min.js"></script>
+  <script type="text/javascript" src="/JS/owl_product_details.js"> </script>
+  <script type="text/javascript" src="/JS/owl.carousel.min.js"></script>
+  <script type="text/javascript" src="/assests/jquery-3.1.1.min.js"></script>
+  <script type="text/javascript" src="/assests/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+  <script>
+      $(document).ready(function() {
+          $('#showmenu').click(function() {
+              $('#menucontentother').slideToggle('300');
+              return false;
+          });
+      });
+      $(".nav-drop").mouseenter(function() {
+          $("#menucontentother").show();
+      }).mouseleave(function() {
+          $("#menucontentother").hide();
+      });
+
+  </script>
+  <script>
+      $('.product-sub p').each(function()
+      {
+          if($.trim($(this).text()).length > 73)
+          {
+              var x = $.trim($(this).text());
+              x = x.slice(0, 73) + "...";
+              $.trim($(this).text(x));
+          }
+
+      });
+  </script>
+      <script>
+          $('.time','.daugia').each(function(){
+              var m = $(this).attr('class').slice(5, $(this).attr('class').length);
+
+              var n = $(this).parents('.daugia').attr('id');
+              if(m === n)
+              {
+
+                  var timeFinish = $(this).attr('value');
+                  if(timeFinish == "null")
+                  {
+                      $('.time.'+m).html("HẾT HẠN");
+                      return;
+
+                  }
+
+                  var calcNewYear = setInterval(function(){
+
+                      date_future = new Date(timeFinish);
+                      date_now = new Date();
+                      seconds = Math.floor((date_future - (date_now))/1000);
+                      minutes = Math.floor(seconds/60);
+                      hours = Math.floor(minutes/60);
+                      days = Math.floor(hours/24);
+                      hours = hours-(days*24);
+                      minutes = minutes-(days*24*60)-(hours*60);
+                      seconds = seconds-(days*24*60*60)-(hours*60*60)-(minutes*60)
+                      if(days < 0)
+                      {
+
+                      }
+
+                      $('.time.'+m).html((days) + " ngày " + '<br>' + checkTime(hours) + ":" + checkTime(minutes) + ":" + checkTime(seconds));
+                  },1000);
+              }
+              function checkTime(i)
+              {
+                  if (i < 10) {
+                      i = "0" + i;
+                  }
+                  return i;
+              }
+          });
+      </script>
+
+
+
+
+
+</body>
