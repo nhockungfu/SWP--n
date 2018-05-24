@@ -4,7 +4,8 @@
     {{#section 'css'}}
         <link rel="stylesheet" type="text/css" href="/assests/bootstrap-3.3.7-dist/css/bootstrap.min.css" />
         <link rel="stylesheet" type="text/css" href="/assests/font-awesome-4.7.0/css/font-awesome.min.css"/>
-
+        <link rel="stylesheet" type="text/css" href="/CSS/style.css">
+        <link rel="stylesheet" type="text/css" href="/CSS/home.css"/>
     {{/section}}
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
@@ -46,6 +47,10 @@
                 <tr>
                     <th>Tên tài khoản</th>
                     <th>Họ và tên</th>
+                    <th>Email</th>
+                    <th>Số điện thoại</th>
+                    <th>Địa chỉ</th>
+                    <td>Chức năng</td>
                 </tr>
             </thead>
             <tbody>
@@ -53,6 +58,9 @@
                 <tr>
                     <td>{{tendangnhap}}</td>
                     <td>{{hoten}}</td>
+                    <td>{{email}}</td>
+                    <td>{{sodienthoai}}</td>
+                    <td>{{diachi}}</td>
                     <td>
                     &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
                         <a href="javascript:;" class="btn btn-info khoiphucmatkhau" data-id="{{idUSER}}" title="Khôi phục mật khẩu"><span class="glyphicon glyphicon-refresh"></span></a>
@@ -67,7 +75,9 @@
 </div>
     
 </div>
-
+    <script type="text/javascript" src="/JS/jquery.flexslider.js"></script>
+    <script type="text/javascript" src="/JS/common.js"></script>
+    <script type="text/javascript" src="/JS/js_custome.js"></script>
     <script type="text/javascript" src="/JS/owl.carousel.min.js"></script>
 <script type="text/javascript" src="/assests/jquery-3.1.1.min.js"></script>
 <script type="text/javascript" src="/assests/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
@@ -85,6 +95,13 @@
         });
 
     </script>
+<script type="text/javascript">
+    $('.khoiphucmatkhau').on('click', function() {
+        var id = $(this).data('id');
+        $('#txtMatkhauId').val(id);
+        $('#formreset').submit();
+    });
+</script>
 <script type="text/javascript">
     $('.xoanguoidung').on('click', function() {
         var id = $(this).data('id');

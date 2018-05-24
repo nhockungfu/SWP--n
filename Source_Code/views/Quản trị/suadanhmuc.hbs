@@ -1,0 +1,147 @@
+<html>
+<head>
+    <title>
+        Thông tin cá nhân
+    </title>
+    {{#section 'css'}}
+        <link rel="stylesheet" type="text/css" href="/assests/bootstrap-3.3.7-dist/css/bootstrap.min.css" />
+        <link rel="stylesheet" type="text/css" href="/assests/font-awesome-4.7.0/css/font-awesome.min.css"/>
+        <link rel="stylesheet" type="text/css" href="/CSS/bootstrap-datepicker3.css">
+        <link rel="stylesheet" type="text/css" href="/CSS/bootstrap-datepicker3.css">
+
+
+        <link rel="stylesheet" type="text/css" href="/CSS/popup_cart_desktop.css">
+        <link rel="stylesheet" type="text/css" href="/CSS/owl.carousel.css">
+        <link rel="stylesheet" type="text/css" href="/CSS/owl.theme.min.css">
+        <link rel="stylesheet" type="text/css" href="/CSS/css.css">
+        <link rel="stylesheet" type="text/css" href="/CSS/jgrowl.css">
+        <link rel="stylesheet" type="text/css" href="/CSS/style.css">
+
+        <link rel="stylesheet" type="text/css" href="/CSS/home.css"/>
+        <link rel="stylesheet" type="text/css" href="/CSS/thongtincanhan.css"/>
+        <link rel="stylesheet" type="text/css" href="/CSS/nhomsanpham.css"/>
+        <link rel="stylesheet" type="text/css" href="/CSS/sanphamyeuthich.css"/>
+        <link rel="stylesheet" type="text/css" href="/CSS/danhgianhanxetcomment.css"/>
+        <link rel="stylesheet" type="text/css" href="/CSS/danhgia.css"/>
+        <link rel="stylesheet" type="text/css" href="/CSS/thaydoithongtincanhan.css"/>
+    {{/section}}
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+
+</head>
+<body>
+<div class="brd">
+    <div class="container">
+        <div class="row">
+            <div class="inner">
+                <ul class="breadcrumbs">
+                    <li class="home"> <a title="Quay lại trang chủ" href="/">Trang chủ</a></li>
+                    <i class="fa fa-angle-right" aria-hidden="true"></i>
+                    <li> <span>Tài khoản</span></li>
+
+
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="col-md-3 col-lg-3"></div>
+
+    <div class="col-md-9 col-lg-9">
+  <div class="tab-content">
+
+
+            <div id="thaydoithongtincanhan" class="tab-pane fade in active">
+
+                <div class="row">
+
+
+                    <div class="col-md-offset-1">
+
+                        <div id="demo" class="content">
+                            <form accept-charset="UTF-8" action="" id="doithongtin" name="doithongtin" method="post" >
+                                <p>&nbsp;</p>
+                                <p>&nbsp;</p>
+                                <p>&nbsp;</p>
+                                <p>&nbsp;</p>
+                                <h2 class="fw_600 txt_u hidden-sm-down" ><b>Thay đổi Danh mục sản phẩm</b></h2>
+
+                                <p>&nbsp;</p>
+
+                                <ul class="form-list">
+                                    <li>
+
+                                    <li>
+                                        <label for="id">Id sản phẩm</label>
+                                        <input type="text" class="input-text" name="id"  value="{{danhmuc3.idLOAISP3}}" readonly="">
+                                    </li>
+                                    <li>
+                                        <label for="id">Tên danh mục hiện tại</label>
+                                        <input type="text" class="input-text" name="" id="email" required="" value="{{danhmuc3.tensanpham}}">
+                                    </li>
+
+
+                                    <li>
+                                        <label for="id">Tên danh mục cần chỉnh sửa</label>
+                                        <input type="text" class="input-text" name="ten" id="email" required="" value="">
+                                    </li>
+                                </ul>
+                                <div class="buttons-set">
+                                    <input id="reset" type="submit" class="button login login_sign" value="Lưu" style="font-weight: bold;"></input>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <button id="trolai" type="button" class="button login login_sign" ><span>Hủy</span></button>
+                                </div>
+
+
+                            </form>
+
+
+                        </div>
+                    </div>
+
+
+                </div>
+
+
+
+
+
+
+
+
+
+
+
+            </div>
+
+        </div>
+
+    </div>  <!-- của container -->
+
+
+    <script type="text/javascript" src="/assests/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/assests/jquery-3.1.1.min.js"></script>
+    <script type="text/javascript" src="/JS/productreviews.min.js"></script>
+    <script type="text/javascript" src="/JS/owl_product_details.js"> </script>
+    <script type="text/javascript" src="/JS/owl.carousel.min.js"></script>
+    <script src="/assests/jquery-validation-1.12.0/jquery.validate.min.js" type="text/javascript"></script>
+    <script type="text/javascript" src="/assests/jquery-3.1.1.min.js"></script>
+    <script type="text/javascript" src="/assests/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#showmenu').click(function() {
+                $('#menucontentother').slideToggle('300');
+                return false;
+            });
+        });
+        $(".nav-drop").mouseenter(function() {
+            $("#menucontentother").show();
+        }).mouseleave(function() {
+            $("#menucontentother").hide();
+        });
+
+    </script>
+
+</div>
+</body>
