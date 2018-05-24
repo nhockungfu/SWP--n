@@ -8,16 +8,16 @@ var express = require('express'),
     wnumb = require('wnumb'),
     handle404 = require('./middle-wares/handle-404'),
     handleLayout=require('./middle-wares/handleLayout'),
-    index= require('./controllers/indexController'),
-    quanlinguoidung=require('./controllers/danhsachnguoidungController'),
-    yeucau=require('./controllers/yeucauController'),
-    timkiem = require('./controllers/timkiemController'),
-    danhsachdanhmuc=require('./controllers/quanlydanhmucController'),
-    sanpham = require('./controllers/sanphamController'),
-    dangbanController = require('./controllers/dangbanController'),
-    taikhoan=require('./controllers/taikhoanController'),
-    quanlisanphamtaikhoan = require('./controllers/quanlisanphamcanhanController');
-    var a = require('./controllers/kiemtrasanpham');
+    index= require('./controller/indexController'),
+    quanlinguoidung=require('./controller/danhsachnguoidungController'),
+    //yeucau=require('./controller/yeucauController'),
+    timkiem = require('./controller/timkiemController'),
+    danhsachdanhmuc=require('./controller/quanlydanhmucController'),
+    sanpham = require('./controller/sanphamController'),
+    dangbanController = require('./controller/dangbanController'),
+    taikhoan=require('./controller/taikhoanController'),
+    quanlisanphamtaikhoan = require('./controller/quanlisanphamcanhanController');
+    var a = require('./controller/kiemtrasanpham');
 
 var request = require('request');
 var session = require('express-session');
@@ -82,7 +82,7 @@ app.use(bodyParser.urlencoded({
 app.use(handleLayout);
 app.use('/', index);
 app.use('/quanliuser',quanlinguoidung);
-app.use('/quanliyeucau',yeucau);
+//app.use('/quanliyeucau',yeucau);
 app.use('/quanlidanhmuc',danhsachdanhmuc);
 app.use('/timkiem', timkiem);
 app.use('/sanphamloai1', sanpham);

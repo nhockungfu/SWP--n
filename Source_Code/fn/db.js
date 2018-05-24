@@ -4,7 +4,7 @@ var mysql = require('mysql'),
 var _HOST = '127.0.0.1',
     _USER = 'root',
     _PWD = '',
-    _DB = 'quanlydaugia';
+    _DB = 'daugia';
 
 exports.load = function(sql) {
 

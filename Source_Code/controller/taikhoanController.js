@@ -8,7 +8,7 @@ var moment = require('moment');
 
 var taikhoanr = express.Router();
 var hbs=require('nodemailer-express-handlebars');
-var yeucau=require('../models/yeucauRepo');
+//var yeucau=require('../models/yeucauRepo');
 var nodemailer=require('nodemailer');
 
 var transporter = nodemailer.createTransport({
@@ -442,19 +442,19 @@ taikhoanr.post('/reset/:id', function(req, res) {
 taikhoanr.get('/xinphep', function(req, res) {
     res.render('Tài khoản/donxinphep');
 });
-taikhoanr.post('/xinphep', function(req, res) {
-    var date=new Date();
-    var thoigian = moment(date).format('YYYY-MM-DD HH:mm:ss');
-    var a={
-        id:req.session.user.id,
-        comment: req.body.comment,
-        thoigian:thoigian
-    }
-    console.log(a);
-    yeucau.xinphep(a).then(function (rows) {
-        res.redirect('/taikhoan/thongtincanhan');
-    })
-});
+// taikhoanr.post('/xinphep', function(req, res) {
+//     var date=new Date();
+//     var thoigian = moment(date).format('YYYY-MM-DD HH:mm:ss');
+//     var a={
+//         id:req.session.user.id,
+//         comment: req.body.comment,
+//         thoigian:thoigian
+//     }
+//     console.log(a);
+//     yeucau.xinphep(a).then(function (rows) {
+//         res.redirect('/taikhoan/thongtincanhan');
+//     })
+// });
 taikhoanr.get('/daugiathang',function (req,res) {
     var entity={
         id:req.session.user.id
