@@ -4,8 +4,7 @@
   "description": "DACK",
   "main": "app.js",
   "scripts": {
-    "start": "node app.js",
-    "build": "node build.js"
+    "start": "node app.js"
   },
   "author": "tui",
   "license": "ISC",
