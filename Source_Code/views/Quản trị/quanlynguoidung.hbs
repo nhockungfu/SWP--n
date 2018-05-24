@@ -1,0 +1,97 @@
+    <html>
+<head>
+    <title>Quản lý danh sách người dùng</title>
+    {{#section 'css'}}
+        <link rel="stylesheet" type="text/css" href="/assests/bootstrap-3.3.7-dist/css/bootstrap.min.css" />
+        <link rel="stylesheet" type="text/css" href="/assests/font-awesome-4.7.0/css/font-awesome.min.css"/>
+
+    {{/section}}
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+ <script type="text/javascript" src="/assests/jquery-3.1.1.min.js"></script>
+
+</head>
+
+<body id="" class="cms-index-index cms-home-page">
+<form method="post" action="taikhoan/resetmatkhau" id="formreset">
+    <input type="hidden" name="idUSER" id="txtMatkhauId">
+</form>
+<form method="post" action="taikhoan/xoauser" id="formxoa">
+    <input type="hidden" name="idUSER" id="txtxoaId">
+</form>
+<div class="brd">
+    <div class="container">
+        <div class="row">
+            <div class="inner">
+                <ul class="breadcrumbs">
+                    <li class="home"> <a title="Quay lại trang chủ" href="/">Trang chủ</a></li>
+                    <i class="fa fa-angle-right" aria-hidden="true"></i>
+                    <li> <span>Quản lý danh sách người dùng</span></li>
+
+
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+<div class="row">
+    <h3 class="fw_600 txt_u" style="font-weight: bold;margin-left: 20px;font-size:18px;font-family: Arial">QUẢN LÝ DANH SÁCH NGƯỜI DÙNG </h3>
+</div>
+<div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <table class="table table-bordered table-hover">
+            <thead style="background: #6ed430;color: black;">
+                <tr>
+                    <th>Tên tài khoản</th>
+                    <th>Họ và tên</th>
+                </tr>
+            </thead>
+            <tbody>
+            {{#each nguoidung}}
+                <tr>
+                    <td>{{tendangnhap}}</td>
+                    <td>{{hoten}}</td>
+                    <td>
+                    &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+                        <a href="javascript:;" class="btn btn-info khoiphucmatkhau" data-id="{{idUSER}}" title="Khôi phục mật khẩu"><span class="glyphicon glyphicon-refresh"></span></a>
+                    &nbsp
+                        <a href="javascript:;" class="btn btn-info xoanguoidung" data-id="{{idUSER}}" title="Xóa người dùng"><span class="glyphicon glyphicon-remove"></span></a>
+                    </td>
+                </tr>
+            {{/each}}
+            </tbody>
+        </table>
+    </div>
+</div>
+    
+</div>
+
+    <script type="text/javascript" src="/JS/owl.carousel.min.js"></script>
+<script type="text/javascript" src="/assests/jquery-3.1.1.min.js"></script>
+<script type="text/javascript" src="/assests/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#showmenu').click(function() {
+                $('#menucontentother').slideToggle('300');
+                return false;
+            });
+        });
+        $(".nav-drop").mouseenter(function() {
+            $("#menucontentother").show();
+        }).mouseleave(function() {
+            $("#menucontentother").hide();
+        });
+
+    </script>
+<script type="text/javascript">
+    $('.xoanguoidung').on('click', function() {
+        var id = $(this).data('id');
+        $('#txtxoaId').val(id);
+        $('#formxoa').submit();
+    });
+</script>
+
+</body>
+</html>
