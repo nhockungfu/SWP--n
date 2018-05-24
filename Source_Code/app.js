@@ -92,9 +92,14 @@ app.use('/quanlisanphamtaikhoan',quanlisanphamtaikhoan);
 
 app.use(handle404);
 
-app.listen(process.env.PORT || 3000,function () {
+var server = app.listen(process.env.PORT || 6000,function () {
     console.log('Sever Is Running');
+	server.close(function () {
+		console.log('[x] Server Stopped');
+	});
    // a.KiemTraSanPham();
 });
 
+
+//server.close();
 module.exports = app;
