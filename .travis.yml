@@ -1,7 +1,7 @@
 language: node_js
 sudo: false
 node_js:
-  - "4.1"
+  - "7.0"
 before_install:
   - cd $TRAVIS_BUILD_DIR/Source_Code
 before_script:
