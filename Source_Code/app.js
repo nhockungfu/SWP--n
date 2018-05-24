@@ -1,11 +1,23 @@
+"use strict";
 var express = require('express'),
     handlebars = require('express-handlebars'),
     handlebars_sections = require('express-handlebars-sections'),
     bodyParser = require('body-parser'),
     morgan = require('morgan'),
     path = require('path'),
-    wnumb = require('wnumb');
-
+    wnumb = require('wnumb'),
+    handle404 = require('./middle-wares/handle-404'),
+    handleLayout=require('./middle-wares/handleLayout'),
+    index= require('./controllers/indexController'),
+    quanlinguoidung=require('./controllers/danhsachnguoidungController'),
+    yeucau=require('./controllers/yeucauController'),
+    timkiem = require('./controllers/timkiemController'),
+    danhsachdanhmuc=require('./controllers/quanlydanhmucController'),
+    sanpham = require('./controllers/sanphamController'),
+    dangbanController = require('./controllers/dangbanController'),
+    taikhoan=require('./controllers/taikhoanController'),
+    quanlisanphamtaikhoan = require('./controllers/quanlisanphamcanhanController');
+    var a = require('./controllers/kiemtrasanpham');
 
 var request = require('request');
 var session = require('express-session');
@@ -25,7 +37,7 @@ app.use(session({
         port: 3306,
         user: 'root',
         password: '',
-        database: 'quanlydaugia',
+        database: 'daugia',
         createDatabaseTable: true,
         schema: {
             tableName: 'sessions',
@@ -41,21 +53,21 @@ app.engine('hbs', handlebars({
     extname: 'hbs',
     defaultLayout: 'main',
     layoutsDir: 'views/_layouts/',
-     helpers: {
-         section: handlebars_sections(),
-         number_format: function (n) {
-             var nf = wnumb({
-                 thousand: ','
-             });
-             return nf.to(n) + " VNĐ";
-         },
-         number_format1: function (n) {
-             var nf = wnumb({
-                 thousand: ','
-             });
-             return nf.to(n) + " Đ";
-         }
-     }
+    helpers: {
+        section: handlebars_sections(),
+        number_format: function (n) {
+            var nf = wnumb({
+                thousand: ','
+            });
+            return nf.to(n) + " VNĐ";
+        },
+        number_format1: function (n) {
+            var nf = wnumb({
+                thousand: ','
+            });
+            return nf.to(n) + " Đ";
+        }
+    }
 }));
 app.set('view engine', 'hbs');
 
@@ -67,9 +79,22 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
     extended: false
 }));
+app.use(handleLayout);
+app.use('/', index);
+app.use('/quanliuser',quanlinguoidung);
+app.use('/quanliyeucau',yeucau);
+app.use('/quanlidanhmuc',danhsachdanhmuc);
+app.use('/timkiem', timkiem);
+app.use('/sanphamloai1', sanpham);
+app.use('/taikhoan',taikhoan);
+app.use('/dangban',dangbanController);
+app.use('/quanlisanphamtaikhoan',quanlisanphamtaikhoan);
 
-// app.use(handle404);
+app.use(handle404);
 
-// app.listen(3000,function () {
-//     console.log('Server Listenning...');
-// });
+app.listen(3000,function () {
+    console.log('Sever Is Running');
+   // a.KiemTraSanPham();
+});
+
+module.exports = app;
