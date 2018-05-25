@@ -70,6 +70,20 @@ productController.get('/:id', function(req, res) {
 
         });
 });
+productController.post('/muangay', function(req, res){
+    var d = new Date();
+    var thoigian = moment(d, 'DD/MM/YYYY').format('YYYY-MM-DD HH:mm:ss');
+    var sanphammuangay={
+        id : req.body.idsanpham,
+        thoigian : thoigian,
+        idUser : req.body.idmuangay,
+        x : req.body.giamuangay
+    }
+    console.log(sanphammuangay);
+    q.all([product.muangay(sanphammuangay),product.themchitiet(sanphammuangay)]).spread(function (update,update2) {
+        res.redirect('/sanphamloai1/detail/' + req.body.idsanpham);
+    })
+})
 productController.post('/:id', function(req, res) {
     var id = req.query.id;
     var x = req.body.sanphamyeuthich;
@@ -257,6 +271,7 @@ productController.get('/detail/:id', function(req, res) {
                             layoutModels: res.locals.layoutModels,
                             product: pro.list,
                             isNguoiBan: pro.list.idBan === req.session.user.id,
+                            iduser: req.session.user.id,
                             isDauGiaNull: pro.list.userDauGia === null,
                             isGiaMuaLienNull: pro.list.giamualien === null,
                             chiTietDauGia: pro.chiTietDauGia,
@@ -278,45 +293,78 @@ productController.get('/detail/:id', function(req, res) {
 
 });
 productController.post('/detail/:id', function(req, res) {
-    var id = req.params.id;
-    var l = req.body.sanphamyeuthich;
-    if(l != null)
+    if(req.params.id === undefined)
     {
+        res.redirect('/taikhoan/dangnhap');
+    }else{
+        var id = req.params.id;
+        var l = req.body.sanphamyeuthich;
+        var kich =  req.body.kichnguoidung;
 
-        var entity={
-            idUser:req.session.user.id,
-            idSanPham:x.slice(5, l.length)
-        }
-        product.them(entity).then(function (affe)
+        if(l != null)
         {
-            res.redirect('/sanphamloai1/detail/' + id);
-        });
+            if(kich != null)
+            {
 
-    }
-    else {
-        var thoigian = moment(new Date()).format('YYYY-MM-DD HH:mm:ss');
-        var bid_object =
-        {
-             x : req.body.tienbid,
-             id : req.params.id,
-             idUser : req.session.user.id,
-            thoigian : thoigian
-        }
-        q.all([product.themchitiet(bid_object),product.loadluotdaugia(bid_object)])
-            .spread(function (changedRows,rows) {
+            }
+            else {
                 var entity={
-                    soluot:rows[0].soluotdaugia+1,
-                    id : req.params.id
+                    idUser:req.session.user.id,
+                    idSanPham:x.slice(5, l.length)
                 }
-console.log(entity);
-                q.all([product.themluotdaugia(entity)]).then(function (changedRows) {
+                product.them(entity).then(function (affe)
+                {
+                    res.redirect('/sanphamloai1/detail/' + id);
+                });
+
+            }
+
+        }
+        else {
+            if (kich == null) {
+                var thoigian = moment(new Date()).format('YYYY-MM-DD HH:mm:ss');
+                var bid_object =
+                    {
+                        x: req.body.tienbid,
+                        id: req.params.id,
+                        idUser: req.session.user.id,
+                        thoigian: thoigian
+                    }
+                q.all([product.themchitiet(bid_object), product.loadluotdaugia(bid_object)])
+                    .spread(function (changedRows, rows) {
+                        var entity1 = {
+                            soluot: rows[0].soluotdaugia + 1,
+                            id: req.params.id
+                        }
+                        q.all([product.themluotdaugia(entity1)]).then(function (changedRows) {
+                            res.redirect(req.params.id);
+                        }).fail(function (err) {
+                            console.log(err);
+                            res.end('fail');
+                        })
+
+                    });
+            }
+            else
+            {
+                var entity =
+                    {
+                        kich : req.body.kichnguoidung,
+                        idSanPham : req.body.idSanPham
+                    }
+                //console.log(req.body.idSanPham[0]);
+                q.all([product.xoaluotdaugia(entity)]).then(function (changedRows) {
                     res.redirect(req.params.id);
                 }).fail(function (err) {
                     console.log(err);
                     res.end('fail');})
+            }
 
-            });
+        }
+
+
     }
+
 });
 
 

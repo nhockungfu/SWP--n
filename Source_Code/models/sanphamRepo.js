@@ -299,4 +299,17 @@ exports.themluotdaugia = function(entity) {
     d.resolve(db.update(sql));
     return d.promise;
 }
+exports.xoaluotdaugia = function(entity) {
+    var d = q.defer();
+    var sql = mustache.render('delete from chitietdaugia where idnguoidaugia= "{{kich}}" AND idsanphamdaugia = "{{idSanPham}}" ', entity);
+
+    d.resolve(db.delete(sql));
+    return d.promise;
+}
+exports.muangay = function(entity) {
+    var d = q.defer();
+    var sql = mustache.render('update sanpham set idnguoithang="{{idUser}}",thoigiankethuc="{{thoigian}}" where idSANPHAM="{{id}}"',entity);
+    d.resolve(db.update(sql));
+    return d.promise;
+}
 

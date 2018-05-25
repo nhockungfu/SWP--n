@@ -151,18 +151,12 @@
                                     </div>
                                 {{/if}}
 
-                                <div class="btn">
-                                    <a href="#" class="button-bid" title="Click để đặt giá">
-                                        Bid
-                                    </a>
-                                </div>
-
-
-
-
-
+                                <h1>***********</h1>
                             </div>
 
+
+
+                        </div>
                         <div class="col-lg-4 col-md-6 col-sm-6 hidden-md-down" style="margin-top: 16px">
                             <div class="">
                                 <table class="table table-hover">
@@ -175,80 +169,28 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    {{#each ../tv}}
-                                    <tr>
-                                        <td>{{number_format sotien}}</td>
-                                        <td>{{thoigiandaugia}}</td>
-                                        <td>{{userDauGia}}</td>
-                                        <td> <a href="#{{userDauGia}}" data-toggle="modal"> <button class="btn btn-success"> Xem đánh giá </button> </a></td>
-                                        <div class="modal fade" id="{{userDauGia}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="line-height: 1">
-                                            <div class="modal-dialog">
-                                                <div class="modal-content">
+                                    <!--<form id = "frm1" method="post" action="">-->
+                                    <!--<div class="checkbox">-->
+                                    <!--<input onclick="document.getElementById('frm1').submit();" class="checked" id="check{{idSANPHAM}}" type="checkbox" name="sanphamyeuthich" value="check{{idSANPHAM}}">-->
+                                    <!--<label for="check{{idSANPHAM}}"> <span title="Lưu sản phẩm yêu thích" class="glyphicon glyphicon-star"></span></label>-->
+                                    <!--</div>-->
+                                    <!--</form>-->
+                                    <form id="kich-san-pham" method="post" action="">
+                                        <input type="hidden" name ="idSanPham" value="{{idSANPHAM}}">
+                                        {{#each ../chiTietDauGia}}
+                                            <tr>
+                                                <td>{{sotien}}</td>
+                                                <td class="thoigiandaugia" id="{{sotien}}"value="{{thoigiandaugia}}"></td>
+                                                <td>{{hoten}}</td>
+                                                <td><button name="kichnguoidung" value="{{idnguoidaugia}}" type="submit" class="btn btn-success">Kích
+                                                </button></td>
+                                            </tr>
+                                        {{/each}}
+                                    </form>
 
-                                                    <div class="modal-header modal-header-success">
-                                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">[ × ]</button>
-                                                        <h2><span style="margin-left:200px"></span> Thông tin người bán </h2>
-                                                    </div>
-
-                                                    <div class="modal-body">
-                                                        <div id="chitietdanhgia" class="tab-pane fade in active">
-                                                            <div class="inner">
-                                                                <ul class="breadcrumbs">
-
-                                                                    <div class="row">
-
-                                                                        <div class="col-md-4">
-                                                                            <li class="nhanxet">Người mua </li>
-                                                                        </div>
-                                                                        <div class="col-md-4">
-                                                                            <li class="nhanxet">Thông tin giao dịch</li>
-                                                                        </div>
-                                                                        <div class="col-md-4">
-                                                                            <li class="nhanxet">Độ tin cậy</li>
-                                                                        </div>
-
-                                                                    </div>
-                                                                </ul>
-                                                            </div>
-                                                            <div>&nbsp;</div>
-                                                            {{#each ../chitiet}}
-                                                                <div class="row">
-
-                                                                    <div class="col-md-4">
-                                                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>{{hoten}}</strong>
-                                                                    </div>
-
-                                                                    <div class="col-md-4">
-                                                                        &nbsp;&nbsp;&nbsp;<a href="{{idSANPHAM}}" style="color: #72AFEB">Chi tiết sản phẩm </a>
-                                                                    </div>
-
-                                                                    <div class="col-md-4">
-                                                                        Điểm:{{diemdanhgia}}
-                                                                        <div>&nbsp;</div>
-                                                                        Nội dung: {{noidungcomment}}
-                                                                    </div>
-
-
-                                                                </div>
-
-                                                            {{/each}}
-                                                                <hr>
-
-
-                                                        </div>
-
-                                                    </div>
-                                                </div><!-- /.modal-content -->
-                                            </div><!-- /.modal-dialog -->
-                                        </div><!-- /.modal -->
-                                    </tr>
-                                    {{/each}}
                                     </tbody>
                                 </table>
-                                <div id="auction-stats">
-                                    Lượt đấu giá:
-                                    <strong>{{soluotdaugia }}</strong>
-                                </div>
+
                                 <div class="">
                                     <a class="text_more_tab" href="#" title="Xem tất cả">Xem tất cả&nbsp;<i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
 
@@ -264,92 +206,91 @@
                                 <div class="item-price-buy">
                                     {{number_format giamualien}}
                                 </div>
-                                <div class="btn" style="margin-left: 19%">
-                                    <a href="../../index.html" class="button-bid" title="Click để đặt giá">
-                                        Mua ngay
-                                    </a>
-                                </div>
+                                <!--<div class="btn" style="margin-left: 19%">-->
+                                <!--<a href="#" class="button-bid" title="Click để đặt giá">-->
+                                <!--Mua ngay-->
+                                <!--</a>-->
+                                <!--</div>-->
                             {{/if}}
 
 
                         </div>
+                        <div class="row product_description">
+                            <div class="col-lg-12 col-xs-12 tab-product-des">
+                                <div class="prd_tabs">
+                                    <ul class="tab-product nav nav-tabs responsive" role="tablist" id="tabs">
+                                        <li role="presentation" class="navi-tab active"><a href="#mota" aria-controls="mota"aria-expanded="true" role="tab" data-toggle="tab">Mô tả sản phẩm</a></li>
 
-                    </div>
-                    <div class="row product_description">
-                        <div class="col-lg-12 col-xs-12 tab-product-des">
-                            <div class="prd_tabs">
-                                <ul class="tab-product nav nav-tabs responsive" role="tablist" id="tabs">
-                                    <li role="presentation" class="navi-tab active"><a href="#mota" aria-controls="mota"aria-expanded="true" role="tab" data-toggle="tab">Mô tả sản phẩm</a></li>
-
-                                    <li role="presentation" class="navi-tab"><a href="#luuy" aria-controls="luuy" role="tab" aria-expanded="false" data-toggle="tab">Mua hàng an toàn</a></li>
+                                        <li role="presentation" class="navi-tab"><a href="#luuy" aria-controls="luuy" role="tab" aria-expanded="false" data-toggle="tab">Mua hàng an toàn</a></li>
 
 
-                                </ul>
+                                    </ul>
 
-                                <!-- Tab panes -->
-                                <div class="tab-content content-tab-product responsive" id="my-tab-content">
-                                    <div role="tabpanel" class="tab-pane active tab_content" id="mota">
+                                    <!-- Tab panes -->
+                                    <div class="tab-content content-tab-product responsive" id="my-tab-content">
+                                        <div role="tabpanel" class="tab-pane active tab_content" id="mota">
 
-                                        <div class="thongtinsanpham details-info">
-                                            <p><h4></h4>
-                                            <p style="text-align: center;"><strong><img src="{{hinhanh2}}" /></strong></p>
-                                            <p><strong>{{{motasanphamfull}}}</strong></p>
+                                            <div class="thongtinsanpham details-info">
+                                                <p><h4></h4>
+                                                <p style="text-align: center;"><strong><img src="{{hinhanh2}}" /></strong></p>
+                                                <p><strong>{{{motasanphamfull}}}</strong></p>
 
-                                            <p style="text-align: center;"><strong><img src="{{hinhanh3}}" /></strong></p>
+                                                <p style="text-align: center;"><strong><img src="{{hinhanh3}}" /></strong></p>
+                                            </div>
+
                                         </div>
 
-                                    </div>
+                                        <div role="tabpanel" class="tab-pane tab_content" id="luuy">
 
-                                    <div role="tabpanel" class="tab-pane tab_content" id="luuy">
+                                            <div class="row">
+                                                <div class="col-xs-12 col-lg-12 col-md-12">
+                                                    <div class="tab-content">
+                                                        <div id="meo-mua" class="tab-content" style="display: block;">
+                                                            <div class="content">
+                                                                <p>
 
-                                        <div class="row">
-                                            <div class="col-xs-12 col-lg-12 col-md-12">
-                                                <div class="tab-content">
-                                                    <div id="meo-mua" class="tab-content" style="display: block;">
-                                                        <div class="content">
-                                                            <p>
+                                                                </p>
+                                                                <div class="title underline">
+                                                                    <h2>Mẹo cho người MUA</h2>
+                                                                </div>
+                                                                <h3>Nguyên tắc “vàng”:</h3>
+                                                                <ul class="list-group">
+                                                                    <li><b>     Không nên chuyển tiền trước khi nhận hàng</b>, đặc biệt đối với những hàng hoá đắt tiền như: đồ điện tử, xe cộ, thú cưng.</li>
+                                                                    <li><b> Gặp nhau trực tiếp để mua bán. Kiểm tra kỹ hàng mới trả tiền.</b></li>
+                                                                    <li><b> Luôn đi cùng 1 người bạn.</b></li>
+                                                                    <li> Giao dịch trực tiếp ở nơi quen thuộc như địa điểm gần nhà, công ty, quán cà phê hoặc các trung tâm bảo hành có thể kiểm tra được sản phẩm.</li>
+                                                                    <li> Thận trọng đối với sản phẩm hàng hiệu, đắt tiền nhưng có giá thấp đáng ngờ.</li>
+                                                                    <li> Yêu cầu giấy tờ để chứng minh sở hữu mặt hàng hoặc giấy tờ cho việc giao dịch giữa bạn và người bán, đặc biệt các mặt hàng có giá trị cao.</li>
+                                                                    <li> Kiểm tra kỹ các giấy tờ sản phẩm khi giao dịch, đặc biệt đối với những mặt hàng như:
+                                                                    <li class="abc"> Xe máy: Cà-vẹt xe, bảo hiểm xe (nếu có), biên lai mua xe, giấy bảo hành xe cũng như giấy tờ tùy thân của người giao dịch với bạn: Chứng minh nhân dân, bằng lái xe.</li>
+                                                                    <li class="abc"> Nhà đất: Giấy tờ pháp lý (Giấy chứng nhận quyền sử dụng đất, quyền sở hữu nhà ở và tài sản).</li>
+                                                                    <li> Bảo quản tài sản cá nhân của bạn cẩn thận khi tham gia giao dịch.</li>
+                                                                    <li> Đối với một số sản phẩm đặc thù (gia cầm sống, động vật sống,sản phẩm chính hãng, thực phẩm, …), người mua cần yêu cầu người bán cung cấp các giấy tờ chứng </li>
+                                                                    <li> minh nguồn gốc, chất lượng sản phẩm hoặc các giấy tờ khác theo quy định của Nhà nước nhằm đảm bảo quyền lợi và sức khỏe của bản thân.</li>
+                                                                </ul>
 
-                                                            </p>
-                                                            <div class="title underline">
-                                                                <h2>Mẹo cho người MUA</h2>
+                                                                <h3>Những trường hợp gian lận cần cảnh giác</h3>
+                                                                <ul class="list-group">
+                                                                    <li><b>Người mua đã thanh toán (chuyển khoản, chuyển qua bưu điện) nhưng không nhận được hàng do người bán không giao hàng.</b></li>
+                                                                    <li>Tráo điện thoại, máy tính bảng, đồ điện tử khác: Người bán mua hàng sản phẩm chính hãng và khi kiểm tra hàng thì là chính hãng, nhưng sau khi người mua trả tiền, </li>
+                                                                    <li> người bán nhanh tay tráo bằng hàng giả.</li>
+                                                                </ul>
+                                                                <p> Khi bạn gặp phải bất kì trường hợp gian lận nào, vui lòng liên hệ với bộ phận Chăm sóc Khách hàng </p>.
                                                             </div>
-                                                            <h3>Nguyên tắc “vàng”:</h3>
-                                                            <ul class="list-group">
-                                                                <li><b>     Không nên chuyển tiền trước khi nhận hàng</b>, đặc biệt đối với những hàng hoá đắt tiền như: đồ điện tử, xe cộ, thú cưng.</li>
-                                                                <li><b> Gặp nhau trực tiếp để mua bán. Kiểm tra kỹ hàng mới trả tiền.</b></li>
-                                                                <li><b> Luôn đi cùng 1 người bạn.</b></li>
-                                                                <li> Giao dịch trực tiếp ở nơi quen thuộc như địa điểm gần nhà, công ty, quán cà phê hoặc các trung tâm bảo hành có thể kiểm tra được sản phẩm.</li>
-                                                                <li> Thận trọng đối với sản phẩm hàng hiệu, đắt tiền nhưng có giá thấp đáng ngờ.</li>
-                                                                <li> Yêu cầu giấy tờ để chứng minh sở hữu mặt hàng hoặc giấy tờ cho việc giao dịch giữa bạn và người bán, đặc biệt các mặt hàng có giá trị cao.</li>
-                                                                <li> Kiểm tra kỹ các giấy tờ sản phẩm khi giao dịch, đặc biệt đối với những mặt hàng như:
-                                                                <li class="abc"> Xe máy: Cà-vẹt xe, bảo hiểm xe (nếu có), biên lai mua xe, giấy bảo hành xe cũng như giấy tờ tùy thân của người giao dịch với bạn: Chứng minh nhân dân, bằng lái xe.</li>
-                                                                <li class="abc"> Nhà đất: Giấy tờ pháp lý (Giấy chứng nhận quyền sử dụng đất, quyền sở hữu nhà ở và tài sản).</li>
-                                                                <li> Bảo quản tài sản cá nhân của bạn cẩn thận khi tham gia giao dịch.</li>
-                                                                <li> Đối với một số sản phẩm đặc thù (gia cầm sống, động vật sống,sản phẩm chính hãng, thực phẩm, …), người mua cần yêu cầu người bán cung cấp các giấy tờ chứng </li>
-                                                                <li> minh nguồn gốc, chất lượng sản phẩm hoặc các giấy tờ khác theo quy định của Nhà nước nhằm đảm bảo quyền lợi và sức khỏe của bản thân.</li>
-                                                            </ul>
-
-                                                            <h3>Những trường hợp gian lận cần cảnh giác</h3>
-                                                            <ul class="list-group">
-                                                                <li><b>Người mua đã thanh toán (chuyển khoản, chuyển qua bưu điện) nhưng không nhận được hàng do người bán không giao hàng.</b></li>
-                                                                <li>Tráo điện thoại, máy tính bảng, đồ điện tử khác: Người bán mua hàng sản phẩm chính hãng và khi kiểm tra hàng thì là chính hãng, nhưng sau khi người mua trả tiền, </li>
-                                                                <li> người bán nhanh tay tráo bằng hàng giả.</li>
-                                                            </ul>
-                                                            <p> Khi bạn gặp phải bất kì trường hợp gian lận nào, vui lòng liên hệ với bộ phận Chăm sóc Khách hàng </p>.
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
 
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
         </section>
+
 
     {{else}}
         <section class="main-collection main-mr">
@@ -405,12 +346,13 @@
                                 <div class="product_title">
                                     <h1 class="fw_600"> <b> {{tenSanPham}} </b></h1>
                                 </div>
-                                <form id = "frm1" method="post" action="">
-                                    <div class="checkbox">
-                                        <input onclick="document.getElementById('frm1').submit();" class="checked" id="check{{idSANPHAM}}" type="checkbox" name="sanphamyeuthich" value="check{{idSANPHAM}}">
-                                        <label for="check{{idSANPHAM}}"> <span title="Lưu sản phẩm yêu thích" class="glyphicon glyphicon-star"></span></label>
-                                    </div>
-                                </form>
+                                <!--<form id = "frm1" method="post" action="">-->
+                                <!--<div class="checkbox">-->
+                                <!--<input onclick="document.getElementById('frm1').submit();" class="checked" id="check{{idSANPHAM}}" type="checkbox" name="sanphamyeuthich" value="check{{idSANPHAM}}">-->
+                                <!--<label for="check{{idSANPHAM}}"> <span title="Lưu sản phẩm yêu thích" class="glyphicon glyphicon-star"></span></label>-->
+                                <!--</div>-->
+                                <!--</form>-->
+
 
                                 <div class="product-seller">
                                     <p> Người bán:
@@ -517,44 +459,46 @@
 
                                     </div>
                                 {{/if}}
-                {{#if ../layoutModels.isBan}}
+                                {{#if ../layoutModels.isLogged}}
 
-                                <div class="btn">
-                                    <a href="#bird_san_pham" class="button-bid" data-toggle="modal" title="Click để đặt giá">
+                                    <div class="btn">
+                                        <a href="#bird_san_pham" class="button-bid" data-toggle="modal" title="Click để đặt giá">
                                             Bid
-                                    </a>
-                                </div>
-                    <div class="modal fade" id="bird_san_pham" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="line-height: 1">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
+                                        </a>
+                                    </div>
+                                    <div class="modal fade" id="bird_san_pham" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="line-height: 1">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
 
-                                <div class="modal-header modal-header-success">
-                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">[ × ]</button>
-                                    <h2><span class="glyphicon glyphicon-plus" style="margin-left:200px"></span> Bid đấu giá </h2>
-                                </div>
+                                                <div class="modal-header modal-header-success">
+                                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">[ × ]</button>
+                                                    <h2><span class="glyphicon glyphicon-plus" style="margin-left:200px"></span> Bid đấu giá </h2>
+                                                </div>
 
-                                <div class="modal-body">
-                                    <form accept-charset="UTF-8" action="" id="customer_login" name="customer_register" method="post" >
-                                        <h4 class="fw_600 txt_u hidden-sm-down">Thêm danh sách danh mục</h4>
-                                        <ul class="form-list">
-                                            <li>
-                                                <label for="id">Bạn muốn đấu giá với số tiền</label>
-                                                <input type="text" class="input-text" title="Tên danh sách cần thêm" name="tienbid" id="ok" value="{{../bid}}" required="">
-                                            </li>
-                                        </ul>
-                                        <div class="buttons-set" style="margin-left: 200px">
-                                            <input id="adddanhmuc" name="ok" type="submit" class="button login login_sign"  style="font-weight: bold;"></input>
-                                            <a href="#"><button class="button login login_sign" type="button" class="close" data-dismiss="modal" aria-hidden="true"><span> Hủy </span></button></a>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div><!-- /.modal-content -->
-                        </div><!-- /.modal-dialog -->
-                    </div><!-- /.modal -->
+                                                <div class="modal-body">
+                                                    <form accept-charset="UTF-8" action="" id="customer_login" name="customer_register" method="post" >
+                                                        <!--<h4 class="fw_600 txt_u hidden-sm-down">Thêm danh sách danh mục</h4>-->
+                                                        <ul class="form-list">
+                                                            <li>
+                                                                <label for="id">Bạn muốn đấu giá với số tiền</label>
+                                                                <input type="number" class="input-text" title="" name="tienbid" id="ok" value="{{../bid}}" required="">
+                                                            </li>
+                                                        </ul>
+                                                        <div class="buttons-set" style="margin-left: 200px">
+                                                            <input id="adddanhmuc" name="ok" type="submit" class="button login login_sign"  style="font-weight: bold;"></input>
+                                                            <a href="#"><button class="button login login_sign" type="button" class="close" data-dismiss="modal" aria-hidden="true"><span> Hủy </span></button></a>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div><!-- /.modal-content -->
+                                        </div><!-- /.modal-dialog -->
+                                    </div><!-- /.modal -->
 
-                {{else}}
-                    <h1>Bạn không có quyền đấu giá</h1>
-                {{/if}}
+                                {{else}}
+                                    <div class="btn">
+                                        <a href="/taikhoan/dangnhap" class="button-bid" >BID</a>
+                                    </div>
+                                {{/if}}
                             </div>
 
                         </div>
@@ -579,10 +523,7 @@
 
                                     </tbody>
                                 </table>
-                                <div id="auction-stats">
-                                    Lượt đấu giá:
-                                    <strong>{{soluotdaugia}}</strong>
-                                </div>
+
                                 <div class="">
                                     <a class="text_more_tab" href="#" title="Xem tất cả">Xem tất cả&nbsp;<i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
 
@@ -592,17 +533,62 @@
                                 <div class="giamuangay">
                                 </div>
                             {{else}}
-                                <div class="giamuangay">
-                                    <h2 > <b> Giá mua ngay: </b></h2>
-                                </div>
-                                <div class="item-price-buy">
-                                    {{number_format giamualien}}
-                                </div>
-                                <div class="btn" style="margin-left: 19%">
-                                    <a href="../../index.html" class="button-bid" title="Click để đặt giá">
-                                        Mua ngay
-                                    </a>
-                                </div>
+                                {{#if ../layoutModels.isLogged}}
+                                    <div class="giamuangay">
+                                        <h2 > <b> Giá mua ngay: </b></h2>
+                                    </div>
+                                    <div class="item-price-buy">
+                                        {{number_format giamualien}}
+                                    </div>
+                                    <div class="btn" style="margin-left: 19%">
+                                        <a href="#muangay" class="button-bid" data-toggle="modal" title="Mua ngay">
+                                            Mua ngay
+                                        </a>
+                                    </div>
+                                    <div class="modal fade" id="muangay" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="line-height: 1">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+
+                                                <div class="modal-header modal-header-success">
+                                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">[ × ]</button>
+                                                    <h2> Bạn có chắc chắn mua sản phẩm ? </h2>
+                                                </div>
+
+                                                <div class="modal-body">
+                                                    <form accept-charset="UTF-8" action="/sanphamloai1/muangay" id="customer_login" name="customer_register" method="post" >
+                                                        <!--<h4 class="fw_600 txt_u hidden-sm-down">Thêm danh sách danh mục</h4>-->
+                                                        <!--<ul class="form-list">-->
+                                                        <!--<li>-->
+                                                        <!--<label for="id">Bạn muốn đấu giá với số tiền</label>-->
+                                                        <!--<input type="number" class="input-text" title="" name="tienbid" id="ok" value="{{../bid}}" required="">-->
+                                                        <!--</li>-->
+                                                        <!--</ul>-->
+                                                        <input type="hidden" name="idsanpham" value={{idSANPHAM}}>
+
+                                                        <input type="hidden" name="idmuangay" value={{../iduser}}>
+                                                        <input type="hidden" name="giamuangay" value={{giamualien}}>
+                                                        <div class="buttons-set" style="margin-left: 200px">
+                                                            <input id="adddanhmuc" name="ok" type="submit" class="button login login_sign"  style="font-weight: bold;" value="OK"></input>
+                                                            <a href="#"><button class="button login login_sign" type="button" class="close" data-dismiss="modal" aria-hidden="true"><span> Hủy </span></button></a>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div><!-- /.modal-content -->
+                                        </div><!-- /.modal-dialog -->
+                                    </div><!-- /.modal -->
+                                {{else}}
+                                    <div class="giamuangay">
+                                        <h2 > <b> Giá mua ngay: </b></h2>
+                                    </div>
+                                    <div class="item-price-buy">
+                                        {{number_format giamualien}}
+                                    </div>
+                                    <div class="btn" style="margin-left: 19%">
+                                        <a href="/taikhoan/dangnhap" class="button-bid" title="Click để đặt giá">
+                                            Mua ngay
+                                        </a>
+                                    </div>
+                                {{/if}}
                             {{/if}}
 
 
